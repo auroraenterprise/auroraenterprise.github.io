@@ -12,7 +12,7 @@ var lang = {
 
     load: function(code, data) {
         if (typeof(data) == "string") {
-            lang.locales[code] = JSOn.parse(data);
+            lang.locales[code] = JSON.parse(data);
         } else {
             lang.locales[code] = data;
         }
@@ -70,14 +70,18 @@ var lang = {
         if (lang.languageData.strings[string] != undefined) {
             var foundTranslation = null;
 
-            if (typeof(l10n.languageData.strings[string]) == "object") {
+            if (typeof(lang.languageData.strings[string]) == "object") {
                 var rules = lang.languageData.strings[string];
 
                 for (var rule in rules) {
                     var originalRule = rule;
 
                     for (var argument in arguments) {
-                        rule = rule.replace(new RegExp("{" + argument + "}", "g"), arguments);
+                        if (useLocaleFormats) {
+                            rule = rule.replace(new RegExp("{" + argument + "}", "g"), lang.format(arguments, lang.language));
+                        } else {
+                            rule = rule.replace(new RegExp("{" + argument + "}", "g"), arguments);
+                        }
                     }
 
                     if (eval(rule.replace(new RegExp("{arg}", "g"), arguments[argument])) == true) {
@@ -141,4 +145,10 @@ $(function() {
             });
         });
     }, 10);
+
+    lang.use(lang.getLocale());
+
+    $("html, body").css("display", "unset");
 });
+
+$("html, body").css("display", "none");

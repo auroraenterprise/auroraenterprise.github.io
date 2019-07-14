@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Aurora</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <link rel="shortcut icon" href="media/Aurora Logo.png">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Quicksand|Source+Sans+Pro|Roboto+Mono&display=swap">
+        <script src="lib/jquery.min.js"></script>
+        <script src="funcs/core/script.js"></script>
+        <script src="funcs/lang/script.js"></script>
+        <script src="funcs/headerMenus/script.js"></script>
+        <script src="lang/en-GB.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" title="@goHome"><img src="media/Aurora Logo.png" id="headerLogo"></a>
+            <div class="headerRight">
+                <a href="index.html" class="headerButton desktop">@home</a>
+                <a href="javascript:headerMenus.show('about');" class="headerButton">
+                    <span>@about</span>
+                    <i class="material-icons">arrow_drop_down</i>
+                </a>
+                <a href="javascript:headerMenus.show('products');" class="headerButton">
+                    <span>@products</span>
+                    <i class="material-icons">arrow_drop_down</i>
+                </a>
+            </div>
+            <div class="headerMenu" name="about">
+                <a href="https://github.com/auroraenterprise" target="blank" class="headerMenuItem">
+                    <img src="media/GitHub Logo.png" alt="@githubLogo" class="headerMenuItemThumbnail">
+                    <div>@visitGithub</div>
+                </a>
+            </div>
+            <div class="headerMenu" name="products">
+                <a href="https://github.com/auroraenterprise/auracoin" target="blank" class="headerMenuItem">
+                    <img src="media/Auracoin Logo.png" alt="@auracoinLogo" class="headerMenuItemThumbnail">
+                    <div>@auracoin</div>
+                </a>
+            </div>
+        </header>
+        <main>
+            <h1 id="tagline">Creating the next crypto</h1>
+        </main>
+    </body>
+</html>

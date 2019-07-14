@@ -1,0 +1,136 @@
+:root {
+    --primaryColour: #35BDE7;
+    --secondaryColour: #8ECF70;
+    --badColour: #f54242;
+    --primaryBackgroundColour: #3d3d3d;
+    --primaryForegroundColour: #f0f0f0;
+    --primaryOverlayColour: rgba(255, 255, 255, 0.2);
+    --secondaryBackgroundColour: #f0f0f0;
+    --secondaryForegroundColour: #262626;
+    --secondaryOverlayColour: rgba(0, 0, 0, 0.2);
+}
+
+* {
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+body {
+    margin: 0;
+    background-color: var(--primaryBackgroundColour);
+    color: var(--primaryForegroundColour);
+    font-size: 20px;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: calc(100% - 20px);
+    padding: 10px;
+    z-index: 1;
+}
+
+main {
+    margin-top: 75px;
+    padding: 10px;
+}
+
+h1 {
+    font-family: "Quicksand", sans-serif;
+}
+
+code, pre {
+    font-family: "Roboto Mono", monospace;
+}
+
+a {
+    color: var(--primaryColour);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.headerRight {
+    float: right;
+    height: 100%;
+}
+
+.headerButton {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px;
+    text-decoration: none;
+    transition: 0.5s;
+    color: var(--primaryForegroundColour);
+}
+
+.headerButton:hover {
+    text-decoration: none;
+}
+
+.headerButton.active {
+    background-color: var(--primaryOverlayColour);
+}
+
+.headerMenu {
+    position: fixed;
+    display: none;
+    top: 75px;
+    left: 0;
+    width: calc(100% - 16px);
+    padding: 10px;
+    z-index: 2;
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--secondaryForegroundColour);
+    overflow-x: auto;
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
+}
+
+.headerMenuItem {
+    display: inline-block;
+    padding: 5px;
+    color: var(--secondaryForegroundColour);
+    text-align: center;
+}
+
+.headerMenuItem:hover {
+    background-color: var(--secondaryOverlayColour);
+    text-decoration: none;
+}
+
+.headerMenuItemThumbnail {
+    width: 120px;
+    height: 120px;
+    padding: 10px;
+}
+
+#headerLogo {
+    margin-left: 10px;
+    height: 50px;
+}
+
+#tagline {
+    font-size: 10vw;
+    margin-top: 10vh;
+    margin-left: 5vw;
+    width: 75%;
+}
+
+/* Overrides for Material Design Icons */
+.material-icons {
+    font-size: inherit!important;
+    vertical-align: -10%;
+}
+
+/* Media queries */
+@media (max-width: 800px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: unset;
+    }
+}
