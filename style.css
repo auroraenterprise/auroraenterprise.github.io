@@ -1,6 +1,6 @@
 :root {
-    --primaryColour: #35BDE7;
-    --secondaryColour: #8ECF70;
+    --primaryColour: #35bde7;
+    --secondaryColour: #8eCf70;
     --badColour: #f54242;
     --primaryBackgroundColour: #3d3d3d;
     --primaryForegroundColour: #f0f0f0;
@@ -33,6 +33,7 @@ header {
 main {
     margin-top: 75px;
     padding: 10px;
+    height: calc(100vh - 100px);
 }
 
 h1 {
@@ -118,6 +119,15 @@ a:hover {
     width: 75%;
 }
 
+#displayChartHolder {
+    position: absolute;
+    top: calc(80vh + 30px);
+    margin: -20px;
+    width: calc(100vw + 10px);
+    height: 20vh;
+    overflow: hidden;
+}
+
 /* Overrides for Material Design Icons */
 .material-icons {
     font-size: inherit!important;
@@ -132,5 +142,10 @@ a:hover {
 
     .mobile {
         display: unset;
+    }
+
+    #displayChartHolder {
+        top: calc(60vh + 30px);
+        height: 40vh;
     }
 }

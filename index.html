@@ -7,10 +7,12 @@
         <link rel="stylesheet" href="style.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Material+Icons|Quicksand|Source+Sans+Pro|Roboto+Mono&display=swap">
         <script src="lib/jquery.min.js"></script>
+        <script src="lib/chart.min.js"></script>
         <script src="funcs/core/script.js"></script>
         <script src="funcs/lang/script.js"></script>
         <script src="funcs/headerMenus/script.js"></script>
         <script src="lang/en-GB.js"></script>
+        <script src="index.js"></script>
     </head>
     <body>
         <header>
@@ -41,6 +43,9 @@
         </header>
         <main>
             <h1 id="tagline">Creating the next crypto</h1>
+            <div id="displayChartHolder">
+                <canvas id="displayChart"></canvas>
+            </div>
         </main>
     </body>
 </html>
