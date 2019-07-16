@@ -128,13 +128,6 @@ a:hover {
     overflow: hidden;
 }
 
-/* Overrides for Material Design Icons */
-.material-icons {
-    font-size: inherit!important;
-    vertical-align: -10%;
-}
-
-/* Media queries */
 @media (max-width: 800px) {
     .desktop {
         display: none;
