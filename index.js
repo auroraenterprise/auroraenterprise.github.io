@@ -51,6 +51,11 @@ $(function() {
                         drawBorder: false
                     }
                 }]
+            },
+            layout: {
+                padding: {
+                    top: 10
+                }
             }
         }
     });
