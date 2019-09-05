@@ -1,3 +1,12 @@
+/*
+    Aurora Website
+    
+    Copyright (C) Aurora Enterprise. All Rights Reserved.
+    
+    https://aur.xyz
+    Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
+*/
+
 :root {
     --primaryColour: #35bde7;
     --secondaryColour: #8eCf70;
@@ -8,6 +17,11 @@
     --secondaryBackgroundColour: #f0f0f0;
     --secondaryForegroundColour: #262626;
     --secondaryOverlayColour: rgba(0, 0, 0, 0.2);
+    --secondaryTextColour: rgba(255, 255, 255, 0.5);
+    --buttonForegroundColour: white;
+    --inputBackgroundColour: white;
+    --inputForegroundColour: black;
+    --inputOutlineColour: #cccccc;
 }
 
 * {
@@ -16,6 +30,7 @@
 
 body {
     margin: 0;
+    margin-bottom: 20px;
     background-color: var(--primaryBackgroundColour);
     color: var(--primaryForegroundColour);
     font-size: 20px;
@@ -27,17 +42,22 @@ header {
     left: 0;
     width: calc(100% - 20px);
     padding: 10px;
+    background-color: var(--primaryBackgroundColour);
     z-index: 1;
 }
 
 main {
     margin-top: 75px;
     padding: 10px;
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
 }
 
 h1 {
     font-family: "Quicksand", sans-serif;
+}
+
+p.secondary {
+    color: var(--secondaryTextColour);
 }
 
 code, pre {
@@ -51,6 +71,56 @@ a {
 
 a:hover {
     text-decoration: underline;
+}
+
+button {
+    width: calc(25% - 10px);
+    margin: 8px 10px;
+    padding: 14px 20px;
+    background-color: var(--secondaryColour);
+    color: white;
+    border: none;
+    font-size: 16px;
+}
+
+button.secondary {
+    background-color: var(--primaryColour);
+}
+
+button.bad {
+    background-color: var(--badColour);
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+input {
+    display: inline-block;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    background-color: var(--inputBackgroundColour);
+    border: 1px solid var(--inputOutlineColour);
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input.code:not(:placeholder-shown) {
+    font-family: "Roboto Mono", monospace;
+    font-size: 17px;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
 }
 
 .headerRight {
@@ -119,6 +189,11 @@ a:hover {
     width: 75%;
 }
 
+#bigAmount {
+    font-size: 10vw;
+    text-align: center;
+}
+
 #displayChartHolder {
     position: absolute;
     top: calc(80vh + 30px);
@@ -126,6 +201,26 @@ a:hover {
     width: calc(100vw + 10px);
     height: 20vh;
     overflow: hidden;
+}
+
+#cornerGraphic {
+    position: absolute;
+    top: 75vh;
+    right: 0;
+    height: 25vh;
+}
+
+/* Media queries */
+
+@media (max-width: 600px) {
+    input {
+        width: 80%;
+    }
+
+    button {
+        width: 80%;
+        margin: 8px 5px;
+    }
 }
 
 @media (max-width: 800px) {
