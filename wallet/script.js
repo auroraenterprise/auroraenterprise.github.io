@@ -17,11 +17,14 @@ var keys = {
 function loadKeys() {
     keys.keyList = JSON.parse(localStorage.getItem("walletKeys") || "{}");
     keys.address = getURLParameter("address") || localStorage.getItem("currentSelectedAddress");
+    keys.publicKey = null;
     keys.privateKey = keys.keyList[keys.address].privateKey;
 
     if (keys.address == null) {
         window.location.href = "setup.html";
     }
+
+
 }
 
 function getPeersList(callback = function() {}, error = function() {}, address = "https://aur.xyz/auracoin-peers/", type = "main", level = "firstlevel") {
@@ -96,6 +99,16 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
     }, ...peersListArguments);
 }
 
+function getPublicKey(address, callback = function() {}, peersListArguments = []) {
+    getNodeValues("/getAddressPublicKey?address=" + address, function(data) {
+        try {
+            callback(getConsensus(data).split("/")[2]);
+        } catch {
+            callback(null);
+        }
+    }, peersListArguments);
+}
+
 function getAddressBalance(address, callback = function() {}, peersListArguments = []) {
     getNodeValues("/getAddressBalance?address=" + address, function(data) {
         try {
@@ -104,4 +117,16 @@ function getAddressBalance(address, callback = function() {}, peersListArguments
             callback(null);
         }
     }, peersListArguments);
+}
+
+function sendTransaction(sender, senderPublicKey, receiver, amount, certificate, signature, nonce, peersListArguments = []) {
+    getNodeValues((
+        "/handleTransaction?sender=" + sender +
+        "&senderPublicKey=" + senderPublicKey +
+        "&receiver=" + receiver +
+        "&amount=" + amount +
+        "&certificate=" + certificate +
+        "&signature=" + signature +
+        "&nonce=" + nonce
+    ), peersListArguments);
 }

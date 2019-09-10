@@ -29,9 +29,12 @@
             "viewGithub": "View code on GitHub",
             "openWallet": "Open wallet",
 
+            "send": "Send",
+            "receive": "Receive",
             "cancel": "Cancel",
             "open": "Open",
             "or": "or",
+            "dontBeLazy": "Don't be lazy. You can't just do that.",
             "fieldsRequiredError": "Sorry! It appears that you have not filled in all of the required fields.",
 
             "dashboard": "Dashboard",
@@ -39,9 +42,17 @@
             "settings": "Settings",
             "exitWallet": "Exit wallet",
             "auracoinAddress": "Auracoin address",
+            "amount": "Amount",
             "publicKey": "Public key",
             "privateKey": "Private key",
-            "storedIn": {"true": "stored in {0}"},
+            "thisAddress": {"true": "Address: {0}"},
+
+            "enterAddressAndAmount": "Enter address and amount to send to below.",
+            "percentOfBalance": {"true": "{0}% of your balance"},
+            "sendAmountError": "Sorry! The amount you entered is invalid.",
+            "sendBalanceError": "Sorry! The amount you entered exceeds your balance for this address.",
+            "sendSelfError": "Sorry! You can't send yourself money, that's just pointless.",
+            "sendAddressError": "Sorry! It appears that the address is not of the correct length.",
 
             "setUpWallet": "Set up wallet",
             "infoSetUpWallet": "Welcome to the Auracoin wallet! To open your wallet, please enter your information below.",

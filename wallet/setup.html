@@ -19,6 +19,7 @@
         <script src="../funcs/core/script.js"></script>
         <script src="../funcs/lang/script.js"></script>
         <script src="../funcs/headerMenus/script.js"></script>
+        <script src="../funcs/tabs/script.js"></script>
         <script src="../lang/en-GB.js"></script>
         <script src="../script.js"></script>
         <script src="script.js"></script>
@@ -41,8 +42,8 @@
             <div>
             <div>
                 <p>@existingWalletKeys</p>
-                <input class="code" placeholder="@auracoinAddress" autocorrect="off" autocapitalize="off" spellcheck="false" id="address">
-                <input class="code" placeholder="@privateKey" autocorrect="off" autocapitalize="off" spellcheck="false" id="privateKey">
+                <input placeholder="@auracoinAddress" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="address">
+                <input placeholder="@privateKey" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="privateKey">
                 <div>
                     <button onclick="window.location.href = '../coin/index.html';" class="secondary">@cancel</button>
                     <button onclick="setUpWallet();">@open</button>

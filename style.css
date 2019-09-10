@@ -22,6 +22,7 @@
     --inputBackgroundColour: white;
     --inputForegroundColour: black;
     --inputOutlineColour: #cccccc;
+    --selectedBackgroundColour: rgba(0, 0, 0, 0.2);
 }
 
 * {
@@ -99,7 +100,7 @@ button:hover {
     opacity: 0.8;
 }
 
-input {
+input, select {
     display: inline-block;
     width: 50%;
     padding: 12px 20px;
@@ -181,6 +182,52 @@ input.code:not(:placeholder-shown) {
     padding: 10px;
 }
 
+.tab {
+    display: none;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    padding-bottom: 10px;
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--secondaryForegroundColour);
+}
+
+.tab.selected {
+    display: block;
+}
+
+.tab p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.tab button {
+    width: calc(50% - 25px);
+}
+
+.tabButton {
+    background-color: transparent;
+    color: var(--secondaryForegroundColour);
+}
+
+.tabButton.selected {
+    background-color: var(--selectedBackgroundColour);
+}
+
+.tab input {
+    width: calc(100% - 25px);
+}
+
+.amountSymbol {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 55px;
+}
+
+.amountValue {
+    width: calc(100% - 85px)!important;
+}
+
 #headerLogo {
     margin-left: 10px;
     height: 50px;
@@ -195,7 +242,6 @@ input.code:not(:placeholder-shown) {
 
 #bigAmount {
     font-size: 10vw;
-    margin-bottom: 0;
 }
 
 #displayChartHolder {
@@ -216,6 +262,12 @@ input.code:not(:placeholder-shown) {
 
 /* Media queries */
 
+@media (max-width: 400px) {
+    .tab button {
+        width: calc(100% - 25px);
+    }
+}
+
 @media (max-width: 600px) {
     input {
         width: 80%;
@@ -224,6 +276,11 @@ input.code:not(:placeholder-shown) {
     button {
         width: 80%;
         margin: 8px 5px;
+    }
+
+    .tab {
+        margin-left: 20px;
+        margin-right: 20px;
     }
 }
 

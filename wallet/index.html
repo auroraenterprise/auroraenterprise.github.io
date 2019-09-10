@@ -19,6 +19,7 @@
         <script src="../funcs/core/script.js"></script>
         <script src="../funcs/lang/script.js"></script>
         <script src="../funcs/headerMenus/script.js"></script>
+        <script src="../funcs/tabs/script.js"></script>
         <script src="../lang/en-GB.js"></script>
         <script src="../script.js"></script>
         <script src="script.js"></script>
@@ -44,7 +45,28 @@
         </header>
         <main class="center">
             <h1 id="bigAmount"><a href="javascript:switchBigAmount();" class="invisible"><span id="bigAmountSymbol">A </span><span class="currentAuracoin" id="bigAmountContent">--</span></a></h1>
-            <p>@storedIn|<code class="currentAddress">--------</code></p>
+            <div name="sendReceive" class="tabGroup">
+                <div name="send" class="tab">
+                    <button onclick="tabs.select('send', 'sendReceive');" class="tabButton selected">@send</button>
+                    <button onclick="tabs.select('receive', 'sendReceive');" class="tabButton">@receive</button>
+                    <p>@enterAddressAndAmount</p>
+                    <input placeholder="@auracoinAddress" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="sendAddress">
+                    <select selected="auracoin" class="amountSymbol" id="sendSymbol">
+                        <option value="auracoin">A </option>
+                        <option value="auro">A.</option>
+                    </select>
+                    <input type="number" placeholder="@amount" min="0" class="amountValue" id="sendAmount">
+                    <p><small>@percentOfBalance|<span id="sendPercentBalance">0</span></small></p>
+                    <button onclick="sendTransaction();">Send</button>
+                    <p id="sendError"></p>
+                </div>
+                <div name="receive" class="tab selected">
+                    <button onclick="tabs.select('send', 'sendReceive');" class="tabButton">@send</button>
+                    <button onclick="tabs.select('receive', 'sendReceive');" class="tabButton selected">@receive</button>
+                    <p>@thisAddress|<code class="currentAddress">--------</code></p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Aurora&bgcolor=f1f1f1&color=aaaaaa" class="currentAddressQRTab" />
+                </div>
+            </div>
         </main>
     </body>
 </html>
