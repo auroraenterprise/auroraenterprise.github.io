@@ -41,13 +41,14 @@
             "auracoinAddress": "Auracoin address",
             "publicKey": "Public key",
             "privateKey": "Private key",
+            "storedIn": {"true": "stored in {0}"},
 
             "setUpWallet": "Set up wallet",
             "infoSetUpWallet": "Welcome to the Auracoin wallet! To open your wallet, please enter your information below.",
             "newWalletKeys": "Haven't got an address and keys? We can generate you a pair via the Auracoin network.",
             "generateWalletKeys": "Generate wallet keys",
             "existingWalletKeys": "Already got an address and keys? Enter them below and open your wallet!",
-            "setUpWalletKeyError": "Sorry! It appears that either your address or private key is not of the correct length."
+            "setUpWalletKeyError": "Sorry! It appears that either your address or private key is not of the correct length.",
         }
     };
 

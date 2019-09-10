@@ -69,6 +69,10 @@ a {
     text-decoration: none;
 }
 
+a.invisible {
+    color: white;
+}
+
 a:hover {
     text-decoration: underline;
 }
@@ -191,7 +195,7 @@ input.code:not(:placeholder-shown) {
 
 #bigAmount {
     font-size: 10vw;
-    text-align: center;
+    margin-bottom: 0;
 }
 
 #displayChartHolder {

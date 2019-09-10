@@ -87,14 +87,14 @@ var lang = {
 
                     for (var argument in arguments) {
                         if (useLocaleFormats) {
-                            rule = rule.replace(new RegExp("{" + argument + "}", "g"), lang.format(arguments, lang.language));
+                            rule = rule.replace(new RegExp("\\{" + argument + "\\}", "g"), lang.format(arguments, lang.language));
                         } else {
-                            rule = rule.replace(new RegExp("{" + argument + "}", "g"), arguments);
+                            rule = rule.replace(new RegExp("\\{" + argument + "\\}", "g"), arguments);
                         }
-                    }
 
-                    if (eval(rule.replace(new RegExp("{arg}", "g"), arguments[argument])) == true) {
-                        foundTranslation = rules[originalRule];
+                        if (eval(Object.keys(rules)[argument].replace(new RegExp("{arg}", "g"), "`" + arguments[argument].replace(/`/g, "\\`") + "`")) == true) {
+                            foundTranslation = rules[originalRule];
+                        }
                     }
                 }
             } else {
@@ -102,6 +102,10 @@ var lang = {
             }
 
             if (foundTranslation != null) {
+                for (var i = 0; i < 1000; i++) {
+                    foundTranslation = foundTranslation.replace(new RegExp("\\{" + i + "\\}", "g"), arguments[i]);
+                }
+                
                 lang.addToLog(string, foundTranslation);
 
                 return foundTranslation;
