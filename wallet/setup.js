@@ -21,6 +21,7 @@ function setUpWallet() {
         };
 
         localStorage.setItem("walletKeys", JSON.stringify(keyList));
+        localStorage.setItem("currentSelectedAddress", address);
 
         window.location.href = "index.html";
     } else {

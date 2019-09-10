@@ -52,7 +52,7 @@ main {
     min-height: calc(100vh - 100px);
 }
 
-h1 {
+h1, h1 * {
     font-family: "Quicksand", sans-serif;
 }
 
@@ -60,7 +60,7 @@ p.secondary {
     color: var(--secondaryTextColour);
 }
 
-code, pre {
+code, code *, pre, pre * {
     font-family: "Roboto Mono", monospace;
 }
 
