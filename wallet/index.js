@@ -85,26 +85,30 @@ function sendTransaction() {
     var receivingAddress = $("#sendAddress").val();
     var sendAmount = getSendValue();
 
-    if (receivingAddress.length == ADDRESS_LENGTH) {
-        if (receivingAddress != "0000000000") {
-            if (receivingAddress != keys.address) {
-                if (sendAmount > 0) {
-                    if (lastAddressBalance - sendAmount >= 0) {
-                        // TODO: Handle the transaction.
+    if (receivingAddress.trim() != "" && String(sendAmount).trim() != "") {
+        if (receivingAddress.length == ADDRESS_LENGTH) {
+            if (receivingAddress != "0000000000") {
+                if (receivingAddress != keys.address) {
+                    if (sendAmount > 0) {
+                        if (lastAddressBalance - sendAmount >= 0) {
+                            // TODO: Handle the transaction.
+                        } else {
+                            $("#sendError").text(_("sendBalanceError"));
+                        }
                     } else {
-                        $("#sendError").text(_("sendBalanceError"));
+                        $("#sendError").text(_("sendAmountError"));
                     }
                 } else {
-                    $("#sendError").text(_("sendAmountError"));
+                    $("#sendError").text(_("sendSelfError"));
                 }
             } else {
-                $("#sendError").text(_("sendSelfError"));
+                $("#sendError").text(_("sendDonationError"));
             }
         } else {
-            $("#sendError").text(_("dontBeLazy"));
+            $("#sendError").text(_("sendAddressError"));
         }
     } else {
-        $("#sendError").text(_("sendAddressError"));
+        $("#sendError").text(_("fieldsRequiredError"));
     }
 }
 
