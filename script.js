@@ -10,7 +10,7 @@
 const ADDRESS_LENGTH = 10;
 const PUBLIC_KEY_LENGTH = 128;
 const PRIVATE_KEY_LENGTH = 64;
-const TRANSACTION_NONCE_RANGE = Math.random(2, 64) - 1;
+const TRANSACTION_NONCE_RANGE = Math.pow(2, 64) - 1;
 const AURO_IN_AURACOIN = Math.pow(10, 8);
 
 function getURLParameter(name) {

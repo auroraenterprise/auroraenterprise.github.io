@@ -104,7 +104,7 @@ function generateTransaction(receivingAddress, amount) {
     };
 }
 
-function sendTransaction() {
+function makeTransaction() {
     var receivingAddress = $("#sendAddress").val();
     var sendAmount = getSendValue();
 
@@ -114,7 +114,21 @@ function sendTransaction() {
                 if (receivingAddress != keys.address) {
                     if (sendAmount > 0) {
                         if (lastAddressBalance - sendAmount >= 0) {
-                            generateTransaction(receivingAddress, sendAmount);
+                            var transaction = generateTransaction(receivingAddress, sendAmount);
+
+                            sendTransaction(
+                                transaction.sender,
+                                transaction.senderPublicKey,
+                                transaction.receiver,
+                                transaction.amount,
+                                transaction.certificate,
+                                transaction.signature,
+                                transaction.nonce,
+                                function() {
+                                    window.location.href = "transactions.html";
+                                },
+                                peersListArguments
+                            );
                         } else {
                             $("#sendError").text(_("sendBalanceError"));
                         }
@@ -141,6 +155,12 @@ $(function() {
     updatePublicKey();
     updateAmountReadout();
     updateAddressReadout();
+
+    setInterval(function() {
+        if (keys.publicKey == null) {
+            updatePublicKey();
+        }
+    }, 10000);
 
     setInterval(updateAmountReadout, 10000);
 

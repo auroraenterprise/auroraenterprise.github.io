@@ -17,14 +17,13 @@ var keys = {
 function loadKeys() {
     keys.keyList = JSON.parse(localStorage.getItem("walletKeys") || "{}");
     keys.address = getURLParameter("address") || localStorage.getItem("currentSelectedAddress");
-    keys.publicKey = null;
-    keys.privateKey = keys.keyList[keys.address].privateKey;
-
+    
     if (keys.address == null) {
         window.location.href = "setup.html";
     }
-
-
+    
+    keys.publicKey = null;
+    keys.privateKey = keys.keyList[keys.address].privateKey;
 }
 
 function getPeersList(callback = function() {}, error = function() {}, address = "https://aur.xyz/auracoin-peers/", type = "main", level = "firstlevel") {
@@ -119,14 +118,18 @@ function getAddressBalance(address, callback = function() {}, peersListArguments
     }, peersListArguments);
 }
 
-function sendTransaction(sender, senderPublicKey, receiver, amount, certificate, signature, nonce, peersListArguments = []) {
+function generateTransactionURL(sender, senderPublicKey, receiver, amount, certificate, signature, nonce) {
+    return "/handleTransaction?sender=" + sender +
+    "&senderPublicKey=" + senderPublicKey +
+    "&receiver=" + receiver +
+    "&amount=" + amount +
+    "&certificate=" + certificate +
+    "&signature=" + signature +
+    "&nonce=" + nonce
+}
+
+function sendTransaction(sender, senderPublicKey, receiver, amount, certificate, signature, nonce, callback = function() {}, peersListArguments = []) {
     getNodeValues((
-        "/handleTransaction?sender=" + sender +
-        "&senderPublicKey=" + senderPublicKey +
-        "&receiver=" + receiver +
-        "&amount=" + amount +
-        "&certificate=" + certificate +
-        "&signature=" + signature +
-        "&nonce=" + nonce
-    ), peersListArguments);
+        generateTransactionURL(sender, senderPublicKey, receiver, amount, certificate, signature, nonce)
+    ), callback, peersListArguments);
 }
