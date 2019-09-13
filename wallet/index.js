@@ -80,8 +80,31 @@ function switchBigAmount() {
     updateAmountReadout();
 }
 
+function generateTransaction(receivingAddress, amount) {
+    // TODO: Handle the transaction.
+
+    var signatureObject = new KJUR.crypto.ECDSA({"curve": "secp256k1"});
+    var nonce = randint(0, TRANSACTION_NONCE_RANGE);
+    var certificate = keys.address + keys.publicKey + receivingAddress + String(amount) + String(nonce);
+    var signature = KJUR.crypto.ECDSA.asn1SigToConcatSig(
+        signatureObject.signHex(
+            CryptoJS.enc.Hex.stringify(CryptoJS.SHA1(certificate)),
+            keys.privateKey
+        )
+    );
+
+    return {
+        sender: keys.address,
+        senderPublicKey: keys.publicKey,
+        receiver: receivingAddress,
+        amount: amount,
+        certificate: certificate,
+        signature: signature,
+        nonce: nonce
+    };
+}
+
 function sendTransaction() {
-    var sendingAddress = keys.address;
     var receivingAddress = $("#sendAddress").val();
     var sendAmount = getSendValue();
 
@@ -91,7 +114,7 @@ function sendTransaction() {
                 if (receivingAddress != keys.address) {
                     if (sendAmount > 0) {
                         if (lastAddressBalance - sendAmount >= 0) {
-                            // TODO: Handle the transaction.
+                            generateTransaction(receivingAddress, sendAmount);
                         } else {
                             $("#sendError").text(_("sendBalanceError"));
                         }
