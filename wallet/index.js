@@ -122,11 +122,19 @@ function makeTransaction() {
                                 transaction.certificate,
                                 transaction.signature,
                                 transaction.nonce,
-                                function() {
-                                    window.location.href = "transactions.html";
+                                function(data) {
+                                    if (getConsensus(data) == "Status/ok") {
+                                        window.location.href = "transactions.html";
+                                    } else {
+                                        $("#sendButton").removeAttr("disabled");
+                                        $("#sendError").text(_("sendCodeError"));
+                                        $("#sendErrorCode").text(getConsensus(data));
+                                    }
                                 },
                                 peersListArguments
                             );
+
+                            $("#sendButton").attr("disabled", "true");
                         } else {
                             $("#sendError").text(_("sendBalanceError"));
                         }

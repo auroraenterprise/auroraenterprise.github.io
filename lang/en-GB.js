@@ -53,6 +53,7 @@
             "sendSelfError": "Sorry! You can't send yourself money, that's just pointless.",
             "sendAddressError": "Sorry! It appears that the address is not of the correct length.",
             "sendDonationError": "The receiving address is the coinbase, it already has infinite money!",
+            "sendCodeError": "Sorry! An error occurred whilst adding your transaction:",
 
             "setUpWallet": "Set up wallet",
             "infoSetUpWallet": "Welcome to the Auracoin wallet! To open your wallet, please enter your information below.",

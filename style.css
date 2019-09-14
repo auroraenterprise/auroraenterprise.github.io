@@ -241,7 +241,8 @@ input.code:not(:placeholder-shown) {
 }
 
 #bigAmount {
-    font-size: 10vw;
+    margin-top: 10px;
+    font-size: 10vh;
 }
 
 #displayChartHolder {

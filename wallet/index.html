@@ -59,8 +59,9 @@
                     </select>
                     <input type="number" placeholder="@amount" min="0" class="amountValue" id="sendAmount">
                     <p><small>@percentOfBalance|<span id="sendPercentBalance">0</span></small></p>
-                    <button onclick="makeTransaction();">Send</button>
+                    <button onclick="makeTransaction();" id="sendButton">@send</button>
                     <p id="sendError"></p>
+                    <p><code id="sendErrorCode"></code></p>
                 </div>
                 <div name="receive" class="tab selected">
                     <button onclick="tabs.select('send', 'sendReceive');" class="tabButton">@send</button>
