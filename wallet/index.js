@@ -7,7 +7,6 @@
     Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
 */
 
-var peersListArguments = ["https://aur.xyz/auracoin-peers/", "test", "firstlevel"];
 var bigAmountIsAuracoin = true;
 var lastAddressBalance = 0;
 
@@ -123,12 +122,14 @@ function makeTransaction() {
                                 transaction.signature,
                                 transaction.nonce,
                                 function(data) {
-                                    if (getConsensus(data) == "Status/ok") {
+                                    var status = getConsensus(data);
+
+                                    if (status == "Status/ok") {
                                         window.location.href = "transactions.html";
                                     } else {
                                         $("#sendButton").removeAttr("disabled");
                                         $("#sendError").text(_("sendCodeError"));
-                                        $("#sendErrorCode").text(getConsensus(data));
+                                        $("#sendErrorCode").text(status);
                                     }
                                 },
                                 peersListArguments

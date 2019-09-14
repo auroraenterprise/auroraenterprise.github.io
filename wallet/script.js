@@ -7,6 +7,8 @@
     Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
 */
 
+var peersListArguments = ["https://aur.xyz/auracoin-peers/", "test", "firstlevel"];
+
 var keys = {
     address: null,
     keyList: null,
@@ -116,6 +118,15 @@ function getAddressBalance(address, callback = function() {}, peersListArguments
             callback(null);
         }
     }, peersListArguments);
+}
+
+function generateKeyPair() {
+    var keyPair = new KJUR.crypto.ECDSA({curve: "secp256k1"}).generateKeyPairHex();
+
+    return {
+        publicKey: keyPair.ecpubhex.substring(2),
+        privateKey: keyPair.ecprvhex
+    };
 }
 
 function generateTransactionURL(sender, senderPublicKey, receiver, amount, certificate, signature, nonce) {

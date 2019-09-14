@@ -34,23 +34,53 @@
                 <a href="../coin/index.html" class="headerButton">@auracoin</a>
         </header>
         <main class="center">
-            <h1>@setUpWallet</h1>
-            <p>@infoSetUpWallet</p>
-            <div>
-                <p>@newWalletKeys</p>
-            </div>
-                <button>@generateWalletKeys</button>
-                <p class="secondary">@or</p>
-            <div>
-            <div>
-                <p>@existingWalletKeys</p>
-                <input placeholder="@auracoinAddress" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="address">
-                <input placeholder="@privateKey" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="privateKey">
+            <div id="setUpWallet">
+                <h1>@setUpWallet</h1>
+                <p>@infoSetUpWallet</p>
                 <div>
-                    <button onclick="window.location.href = '../coin/index.html';" class="secondary">@cancel</button>
-                    <button onclick="setUpWallet();">@open</button>
+                    <p>@newWalletKeys</p>
                 </div>
-                <p id="setUpWalletError"></p>
+                <button onclick="generateWallet();">@generateWalletKeys</button>
+                <p class="secondary">@or</p>
+                <div>
+                    <p>@existingWalletKeys</p>
+                    <input placeholder="@auracoinAddress" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="address">
+                    <input placeholder="@privateKey" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="privateKey">
+                    <div>
+                        <button onclick="window.location.href = '../coin/index.html';" class="secondary">@cancel</button>
+                        <button onclick="setUpWallet();">@openWallet</button>
+                    </div>
+                    <p id="setUpWalletError"></p>
+                </div>
+            </div>
+            <div id="generateWalletLoading">
+                <div class="spinner" id="generateWalletLoadingSpinner"></div>
+                <div id="generateWalletLoadingMotivationalWords">
+                    <small>@generateWalletLoadingMotivationalWords</small>
+                </div>
+            </div>
+            <div id="generateWalletError">
+                <h1>@generateWalletError</h1>
+                <p>@generateWalletErrorDescription</p>
+                <p><code id="generateWalletErrorCode"></code></p>
+                <button onclick="generateWallet();">@retry</button>
+            </div>
+            <div id="generateWalletResult">
+                <h1>@generateWalletResult</h1>
+                <p>@generateWalletResultDescription</p>
+                <div>
+                    <small>@auracoinAddress</small><br>
+                    <pre id="generateWalletResultAddress">----------</pre>
+                </div>
+                <div>
+                    <small>@publicKey</small><br>
+                    <pre id="generateWalletResultPublicKey">----------------------------------------------------------------</pre>
+                </div>
+                <div>
+                    <small>@privateKey</small><br>
+                    <pre id="generateWalletResultPrivateKey">--------------------------------------------------------------------------------------------------------------------------------</pre>
+                </div>
+                <button onclick="window.location.href = 'index.html';">@openWallet</button>
             </div>
         </main>
     </body>

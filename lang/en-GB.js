@@ -32,7 +32,7 @@
             "send": "Send",
             "receive": "Receive",
             "cancel": "Cancel",
-            "open": "Open",
+            "retry": "Retry",
             "or": "or",
             "fieldsRequiredError": "Sorry! It appears that you have not filled in all of the required fields.",
 
@@ -56,11 +56,17 @@
             "sendCodeError": "Sorry! An error occurred whilst adding your transaction:",
 
             "setUpWallet": "Set up wallet",
-            "infoSetUpWallet": "Welcome to the Auracoin wallet! To open your wallet, please enter your information below.",
-            "newWalletKeys": "Haven't got an address and keys? We can generate you a pair via the Auracoin network.",
-            "generateWalletKeys": "Generate wallet keys",
+            "infoSetUpWallet": "Welcome to the Auracoin wallet manager! To open your wallet, please enter your information below.",
+            "newWalletKeys": "Haven't got an address and keys? We can generate you a pair and an address via the Auracoin network.",
+            "generateWalletKeys": "Generate new wallet",
             "existingWalletKeys": "Already got an address and keys? Enter them below and open your wallet!",
             "setUpWalletKeyError": "Sorry! It appears that either your address or private key is not of the correct length.",
+
+            "generateWalletLoadingMotivationalWords": "Making you the best wallet ever...",
+            "generateWalletError": "We couldn't generate your wallet",
+            "generateWalletErrorDescription": "Check your connection to nodes and try again. Error code:",
+            "generateWalletResult": "Your new wallet is ready!",
+            "generateWalletResultDescription": "We've generated your new wallet! Take note of the details listed below and keep them safe."
         }
     };
 
