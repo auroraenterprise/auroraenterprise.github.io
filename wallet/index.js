@@ -81,8 +81,6 @@ function switchBigAmount() {
 }
 
 function generateTransaction(receivingAddress, amount) {
-    // TODO: Handle the transaction.
-
     var signatureObject = new KJUR.crypto.ECDSA({"curve": "secp256k1"});
     var nonce = randint(0, TRANSACTION_NONCE_RANGE);
     var certificate = keys.address + keys.publicKey + receivingAddress + String(amount) + String(nonce);
