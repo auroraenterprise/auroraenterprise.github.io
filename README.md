@@ -1,4 +1,4 @@
-# auroraenterprise.github.io
+# Aurora Website
 Main website for Aurora.
 
 ## Detailed structure of site
