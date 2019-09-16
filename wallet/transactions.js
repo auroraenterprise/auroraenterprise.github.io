@@ -83,7 +83,7 @@ $(function() {
     }, 10000);
 
     setInterval(updateAmountReadout, 10000);
-    // setInterval(getTransactionEntries, 10000);
+    setInterval(getTransactionEntries, 10000);
 
     $("#sendAmount").bind("keyup mouseup", function() {
         updatePercentBalance();
