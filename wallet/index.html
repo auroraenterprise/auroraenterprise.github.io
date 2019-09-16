@@ -31,7 +31,7 @@
         <header>
             <a href="index.html" title="@goHome"><img src="../media/Auracoin Logo.png" id="headerLogo"></a>
             <div class="headerRight">
-                <a href="index.html" class="headerButton desktop">@dashboard</a>
+                <a href="index.html" class="headerButton selected desktop">@dashboard</a>
                 <a href="transactions.html" class="headerButton desktop">@transactions</a>
                 <a href="javascript:headerMenus.show('settings');" class="headerButton">
                     <span>@settings</span>
@@ -46,7 +46,7 @@
             </div>
         </header>
         <main class="center">
-            <h1 id="bigAmount"><a href="javascript:switchBigAmount();" class="invisible"><span id="bigAmountSymbol">A </span><span class="currentAuracoin" id="bigAmountContent">--</span></a></h1>
+            <h1 id="bigAmount"><a href="javascript:switchAmount();" class="invisible"><span class="amountSymbol">A </span><span class="currentAuracoin amountContent">--</span></a></h1>
             <div name="sendReceive" class="tabGroup">
                 <div name="send" class="tab">
                     <button onclick="tabs.select('send', 'sendReceive');" class="tabButton selected">@send</button>

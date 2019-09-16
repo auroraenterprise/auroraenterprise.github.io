@@ -7,40 +7,7 @@
     Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
 */
 
-var bigAmountIsAuracoin = true;
 var lastAddressBalance = 0;
-
-function updatePublicKey() {
-    getPublicKey(keys.address, function(data) {
-        keys.publicKey = data;
-    }, peersListArguments);
-}
-
-function updateAmountReadout() {
-    getAddressBalance(keys.address, function(data) {
-        var currentAuro = data;
-        var currentAuracoin;
-
-        lastAddressBalance = currentAuro;
-        
-        if (currentAuro == null) {
-            currentAuro = "----------";
-            currentAuracoin = "--";
-        } else {
-            currentAuracoin = currentAuro / AURO_IN_AURACOIN;
-        }
-
-        $(".currentAuro").text(currentAuro);
-        $(".currentAuracoin").text(currentAuracoin);
-    }, peersListArguments);
-}
-
-function updateAddressReadout() {
-    $(".currentAddress").text(keys.address);
-
-    $(".currentAddressQR").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=auracoin:" + keys.address + "&bgcolor=ffffff&color=000000");
-    $(".currentAddressQRTab").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=auracoin:" + keys.address + "&bgcolor=f0f0f0&color=262626");
-}
 
 function getSendValue() {
     var value = Number($("#sendAmount").val());
@@ -63,20 +30,6 @@ function updatePercentBalance() {
     } else {
         $("#sendPercentBalance").text("0");
     }
-}
-
-function switchBigAmount() {
-    if (bigAmountIsAuracoin) {
-        $("#bigAmountSymbol").text("A.");
-        $("#bigAmountContent").attr("class", "currentAuro");
-    } else {
-        $("#bigAmountSymbol").text("A ");
-        $("#bigAmountContent").attr("class", "currentAuracoin");
-    }
-
-    bigAmountIsAuracoin = !bigAmountIsAuracoin;
-
-    updateAmountReadout();
 }
 
 function generateTransaction(receivingAddress, amount) {

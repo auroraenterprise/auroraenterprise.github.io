@@ -8,6 +8,7 @@
 */
 
 var peersListArguments = ["https://aur.xyz/auracoin-peers/", "test", "firstlevel"];
+var amountIsAuracoin = true;
 
 var keys = {
     address: null,
@@ -143,4 +144,52 @@ function sendTransaction(sender, senderPublicKey, receiver, amount, certificate,
     getNodeValues((
         generateTransactionURL(sender, senderPublicKey, receiver, amount, certificate, signature, nonce)
     ), callback, peersListArguments);
+}
+
+function updatePublicKey() {
+    getPublicKey(keys.address, function(data) {
+        keys.publicKey = data;
+    }, peersListArguments);
+}
+
+function updateAmountReadout() {
+    getAddressBalance(keys.address, function(data) {
+        var currentAuro = data;
+        var currentAuracoin;
+
+        lastAddressBalance = currentAuro;
+        
+        if (currentAuro == null) {
+            currentAuro = "----------";
+            currentAuracoin = "--";
+        } else {
+            currentAuracoin = currentAuro / AURO_IN_AURACOIN;
+        }
+
+        $(".currentAuro").text(currentAuro);
+        $(".currentAuracoin").text(currentAuracoin);
+    }, peersListArguments);
+}
+
+function updateAddressReadout() {
+    $(".currentAddress").text(keys.address);
+
+    $(".currentAddressQR").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=auracoin:" + keys.address + "&bgcolor=ffffff&color=000000");
+    $(".currentAddressQRTab").attr("src", "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=auracoin:" + keys.address + "&bgcolor=f0f0f0&color=262626");
+}
+
+function switchAmount() {
+    if (amountIsAuracoin) {
+        $(".amountSymbol").text("A.");
+        $(".amountContent").removeClass("currentAuracoin");
+        $(".amountContent").addClass("currentAuro");
+    } else {
+        $(".amountSymbol").text("A ");
+        $(".amountContent").removeClass("currentAuro");
+        $(".amountContent").addClass("currentAuracoin");
+    }
+
+    amountIsAuracoin = !amountIsAuracoin;
+
+    updateAmountReadout();
 }

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--
+    Aurora Website
+    
+    Copyright (C) Aurora Enterprise. All Rights Reserved.
+    
+    https://aur.xyz
+    Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
+-->
+<html>
+    <head>
+        <title>@auroraAuracoin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <link rel="shortcut icon" href="../media/Aurora Logo.png">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../lib/fonts.css">
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/chart.min.js"></script>
+        <script src="../lib/jsrsasign.min.js"></script>
+        <script src="../lib/crypto.min.js"></script>
+        <script src="../funcs/core/script.js"></script>
+        <script src="../funcs/lang/script.js"></script>
+        <script src="../funcs/headerMenus/script.js"></script>
+        <script src="../funcs/tabs/script.js"></script>
+        <script src="../lang/en-GB.js"></script>
+        <script src="../script.js"></script>
+        <script src="script.js"></script>
+        <script src="transactions.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" title="@goHome"><img src="../media/Auracoin Logo.png" id="headerLogo"></a>
+            <div class="headerRight">
+                <a href="index.html" class="headerButton desktop">@dashboard</a>
+                <a href="transactions.html" class="headerButton selected desktop">@transactions</a>
+                <a href="javascript:headerMenus.show('settings');" class="headerButton">
+                    <span>@settings</span>
+                    <i class="icon">arrow_drop_down</i>
+                </a>
+            </div>
+            <div class="headerMenu" name="settings">
+                <a href="../coin/index.html" class="headerMenuItem">
+                    <img src="../media/Icons/Exit.png" alt="" class="headerMenuItemThumbnail">
+                    <div>@exitWallet</div>
+                </a>
+            </div>
+        </header>
+        <main class="article">
+            <p>@totalAmount|<a href="javascript:switchAmount();" class="invisible"><strong><span class="amountSymbol">A </span><span class="currentAuracoin amountContent">--</span></strong></a></p>
+            <div id="transactionEntries">
+            </div>
+        </main>
+    </body>
+</html>

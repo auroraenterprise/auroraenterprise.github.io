@@ -14,6 +14,7 @@
     --primaryBackgroundColour: #3d3d3d;
     --primaryForegroundColour: #f0f0f0;
     --primaryOverlayColour: rgba(255, 255, 255, 0.2);
+    --primaryOverlayColourFade: rgba(255, 255, 255, 0.05);
     --secondaryBackgroundColour: #f0f0f0;
     --secondaryForegroundColour: #262626;
     --secondaryOverlayColour: rgba(0, 0, 0, 0.2);
@@ -24,7 +25,9 @@
     --inputBackgroundColour: white;
     --inputForegroundColour: black;
     --inputOutlineColour: #cccccc;
+    --inputHoverColour: #dddddd;
     --selectedBackgroundColour: rgba(0, 0, 0, 0.2);
+    --newTransactionEntry: #676767;
     --spinnerLoaderRadius: 30px;
 }
 
@@ -186,6 +189,14 @@ input.code:not(:placeholder-shown) {
     font-size: 17px;
 }
 
+.desktop {
+    display: unset;
+}
+
+.mobile {
+    display: none;
+}
+
 .left {
     text-align: left;
 }
@@ -196,6 +207,12 @@ input.code:not(:placeholder-shown) {
 
 .right {
     text-align: right;
+}
+
+.article {
+    margin-left: 20vw;
+    margin-right: 20vw;
+    text-align: left;
 }
 
 .headerRight {
@@ -214,6 +231,14 @@ input.code:not(:placeholder-shown) {
 
 .headerButton:hover {
     text-decoration: none;
+}
+
+.headerButton.selected {
+    background-color: var(--primaryOverlayColour);
+}
+
+.headerButton.selected.fade {
+    background-color: var(--primaryOverlayColourFade);
 }
 
 .headerButton.active {
@@ -296,6 +321,56 @@ input.code:not(:placeholder-shown) {
 
 .amountValue {
     width: calc(100% - 85px)!important;
+}
+
+.transactionEntry {
+    padding: 10px;
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--secondaryForegroundColour);
+    overflow: auto;
+}
+
+.transactionEntry:hover {
+    background-color: var(--inputHoverColour);
+}
+
+.transactionEntry:not(:last-child) {
+    border-bottom: 2px solid var(--inputOutlineColour);
+}
+
+.transactionEntry > * {
+    display: inline-block;
+}
+
+.transactionEntry > :nth-child(1), .transactionEntry > :nth-child(3) {
+    width: 120px;
+}
+
+.transactionEntry > :nth-child(4), .transactionEntry > :nth-child(5) {
+    float: right;
+    width: 140px;
+}
+
+.transactionEntry > :nth-child(4) {
+    text-align: right;
+}
+
+.transactionEntry > .me {
+    font-weight: 700;
+}
+
+.transactionEntry > .positive {
+    color: #4fd12e;
+}
+
+.transactionEntry > .negative {
+    color: #eb3434;
+}
+
+.transactionEntry.newTransaction {
+    background-color: var(--newTransactionEntry);
+    color: white;
+    border-bottom: none;
 }
 
 #headerLogo {
@@ -394,9 +469,33 @@ input.code:not(:placeholder-shown) {
 
 /* Media queries */
 
-@media (max-width: 400px) {
-    .tab button {
-        width: calc(100% - 25px);
+@media (max-width: 800px) {
+    .desktop {
+        display: none;
+    }
+
+    .mobile {
+        display: unset;
+    }
+
+    .article {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #displayChartHolder {
+        top: calc(60vh + 30px);
+        height: 40vh;
+    }
+}
+
+@media (max-width: 650px) {
+    .transactionEntry > :nth-child(3) {
+        width: 60%;
+    }
+
+    .transactionEntry > :nth-child(4), .transactionEntry > :nth-child(5) {
+        width: 50%;
     }
 }
 
@@ -421,17 +520,12 @@ input.code:not(:placeholder-shown) {
     }
 }
 
-@media (max-width: 800px) {
-    .desktop {
-        display: none;
+@media (max-width: 400px) {
+    .tab button {
+        width: calc(100% - 25px);
     }
 
-    .mobile {
-        display: unset;
-    }
-
-    #displayChartHolder {
-        top: calc(60vh + 30px);
-        height: 40vh;
+    .transactionEntry > :nth-child(3) {
+        width: unset;
     }
 }

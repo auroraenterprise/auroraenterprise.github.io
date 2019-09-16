@@ -16,12 +16,14 @@ var headerMenus = {
 
             $("div.headerMenu[name='" + menuName + "']").fadeIn();
             $(".headerButton:focus").addClass("active");
+            $(".headerButton.selected").addClass("fade");
         }
     },
 
     hide: function() {
         $("div.headerMenu").fadeOut();
         $(".headerButton.active").removeClass("active");
+        $(".headerButton.selected").removeClass("fade");
     }
 };
 
