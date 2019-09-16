@@ -32,7 +32,7 @@ var lang = {
             lang.language = code;
             lang.languageData = lang.locales[code];
         } else {
-            if (code == "en-AU" || lang.lang == "en-US") {
+            if (code == "en-AU" || code == "en-US") {
                 lang.use("en-GB");
             } else {
                 throw "Cannot use language \"" + code + "\"";
