@@ -46,8 +46,19 @@
             </div>
         </header>
         <main class="article">
-            <p>@totalAmount|<a href="javascript:switchAmount();" class="invisible"><strong><span class="amountSymbol">A </span><span class="currentAuracoin amountContent">--</span></strong></a></p>
-            <div id="transactionEntries">
+            <p id="transactionEntriesHeader">@totalAmount|<a href="javascript:switchAmount();" class="invisible"><strong><span class="amountSymbol">A </span><span class="currentAuracoin amountContent">--</span></strong></a></p>
+            <div id="transactionEntries"></div>
+            <div id="transactionEntriesEmpty">
+                <h1>@transactionEntriesEmpty</h1>
+                <p>@transactionEntriesEmptyDescription</p>
+                <p><code id="generateWalletErrorCode"></code></p>
+                <button onclick="window.location.href = 'index.html';">@viewMyAddressInfo</button>
+            </div>
+            <div id="transactionEntriesError">
+                <h1>@transactionEntriesError</h1>
+                <p>@transactionEntriesErrorDescription</p>
+                <p><code id="generateWalletErrorCode"></code></p>
+                <button onclick="getTransactionEntries();">@retry</button>
             </div>
         </main>
     </body>

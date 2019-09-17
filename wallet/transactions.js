@@ -7,7 +7,13 @@
     Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
 */
 
-function addTransactionEntry(sender, receiver, amount = 0) {
+const PAGINATION_INCREASE_AMOUNT = 20;
+
+var paginationAmount = PAGINATION_INCREASE_AMOUNT;
+
+function addTransactionEntry(sender, receiver, amount = 0, timestamp = null) {
+    // TODO: Add timestamp info to entries
+
     var transactionEntry = $("<div class='transactionEntry'>");
 
     if (sender == null || receiver == null) { // Unconfirmed transaction
@@ -50,22 +56,100 @@ function addTransactionEntry(sender, receiver, amount = 0) {
     }
 
     if (sender == null || receiver == null) { // Transaction still processing
-        transactionEntry.append($("<span>").text(_("processingTransaction")));
+        transactionEntry.append($("<span>")
+            .text(_("processingTransaction"))
+            .attr("title", _("processingTransactionTooltip"))
+        );
     } else { // Transaction is verified
-        transactionEntry.append($("<span>").text(_("verifiedTransaction")));
+        transactionEntry.append($("<span>")
+            .text(_("verifiedTransaction"))
+            // .attr("title", lang.format(new Date(timestamp), lang.language))
+        );
     }
 
     $("#transactionEntries").append(transactionEntry);
 }
 
 function getTransactionEntries() {
-    // TODO: Add working transaction entry getter instead of placeholder
+    $("main").attr("class", "article");
+    $("#transactionEntriesHeader").show();
+    $("#transactionEntries").show();
+    $("#transactionEntriesEmpty").hide();
+    $("#transactionEntriesError").hide();
 
-    $("#transactionEntries").empty();
+    getAddressBalance(keys.address, function(balance) {
+        var balanceDifference = balance;
 
-    addTransactionEntry(keys.address, null, AURO_IN_AURACOIN * -0.5);
-    addTransactionEntry("0000000000", keys.address, AURO_IN_AURACOIN);
-    addTransactionEntry("0123456789", keys.address, AURO_IN_AURACOIN * 2);
+        getNodeValues("/getBlockchain", function(multiBlockchain) {
+            try {
+                var blockchain = JSON.parse(getConsensus(multiBlockchain));
+                var orderedEntries = [];
+
+                $("#transactionEntries").empty();
+        
+                for (var i = 0; i < blockchain.blocks.length; i++) {
+                    for (var j = 0; j < blockchain.blocks[i].data.length; j++) {
+                        var blockData = blockchain.blocks[i].data[j];
+
+                        if (blockData.type == "transaction") {
+                            if (blockData.body.sender == keys.address) {
+                                orderedEntries.unshift({
+                                    sender: blockData.body.sender,
+                                    receiver: blockData.body.receiver,
+                                    amount: -blockData.body.amount,
+                                    timestamp: blockchain.blocks[i].timestamp
+                                });
+
+                                balanceDifference += blockData.body.amount;
+                            } else if (blockData.body.receiver == keys.address) {
+                                orderedEntries.unshift({
+                                    sender: blockData.body.sender,
+                                    receiver: blockData.body.receiver,
+                                    amount: blockData.body.amount,
+                                    timestamp: blockchain.blocks[i].timestamp
+                                });
+
+                                balanceDifference -= blockData.body.amount;
+                            }
+                        }
+                    }
+                }
+
+                if (orderedEntries.length > 0 || balanceDifference != 0) {
+                    if (balanceDifference > 0) {
+                        addTransactionEntry(null, keys.address, balanceDifference, null);
+                    } else if (balanceDifference < 0) {
+                        addTransactionEntry(keys.address, null, balanceDifference, null);                    
+                    }
+
+                    for (var i = 0; i < Math.min(orderedEntries.length, paginationAmount); i++) {
+                        addTransactionEntry(orderedEntries[i].sender, orderedEntries[i].receiver, orderedEntries[i].amount, orderedEntries[i].timestamp);                    
+                    }
+
+                    if (orderedEntries.length > paginationAmount) {
+                        $("#transactionEntries").append(
+                            $("<div class='center'>").append($("<button>")
+                                .text(_("loadMore"))
+                                .attr("onclick", "paginationAmount += PAGINATION_INCREASE_AMOUNT; getTransactionEntries();")
+                            )
+                        );
+                    }
+                } else {
+                    $("main").attr("class", "center");
+                    $("#transactionEntriesHeader").hide();
+                    $("#transactionEntries").hide();
+                    $("#transactionEntriesEmpty").show();
+                    $("#transactionEntriesError").hide();
+                }
+            } catch {
+                $("main").attr("class", "center");
+                $("#transactionEntriesHeader").hide();
+                $("#transactionEntries").hide();
+                $("#transactionEntriesEmpty").hide();
+                $("#transactionEntriesError").show();
+            }
+        }, peersListArguments);
+    }, peersListArguments)
 }
 
 $(function() {
@@ -83,7 +167,11 @@ $(function() {
     }, 10000);
 
     setInterval(updateAmountReadout, 10000);
-    setInterval(getTransactionEntries, 10000);
+    setInterval(function() {
+        if (paginationAmount == PAGINATION_INCREASE_AMOUNT) {
+            getTransactionEntries();
+        }
+    }, 10000);
 
     $("#sendAmount").bind("keyup mouseup", function() {
         updatePercentBalance();

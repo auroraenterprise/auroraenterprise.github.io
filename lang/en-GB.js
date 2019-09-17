@@ -33,6 +33,7 @@
             "receive": "Receive",
             "cancel": "Cancel",
             "retry": "Retry",
+            "loadMore": "Load more",
             "or": "or",
             "fieldsRequiredError": "Sorry! It appears that you have not filled in all of the required fields.",
 
@@ -57,7 +58,13 @@
             "sendCodeError": "Sorry! An error occurred whilst adding your transaction:",
             "unconfirmedTransaction": "Unconfirmed",
             "processingTransaction": "Processing...",
+            "processingTransactionTooltip": "This transaction is still being processed. Transactions take around 2 minutes to process, and when it is verified it will be shown below.",
             "verifiedTransaction": "Verified",
+            "transactionEntriesEmpty": "There are no transactions yet!",
+            "transactionEntriesEmptyDescription": "When you send and receive Auracoin, your transactions appear here.",
+            "viewMyAddressInfo": "View address to receive Auracoin",
+            "transactionEntriesError": "Couldn't get your transaction history",
+            "transactionEntriesErrorDescription": "Check your connection to nodes and try again.",
 
             "setUpWallet": "Set up wallet",
             "infoSetUpWallet": "Welcome to the Auracoin wallet manager! To open your wallet, please enter your information below.",
