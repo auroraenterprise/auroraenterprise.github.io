@@ -65,7 +65,7 @@
             "thisIsYou": "This is your address.",
             "transactionEntriesLoadingMotivationalWords": "Loading your history...",
             "transactionEntriesEmpty": "There are no transactions yet!",
-            "transactionEntriesEmptyDescription": "When you send and receive Auracoin, your transactions appear here.",
+            "transactionEntriesEmptyDescription": "When you send and receive Auracoin, your transactions will appear here.",
             "viewMyAddressInfo": "View address to receive Auracoin",
             "transactionEntriesError": "Couldn't get your transaction history",
             "transactionEntriesErrorDescription": "Check your connection to nodes and try again.",

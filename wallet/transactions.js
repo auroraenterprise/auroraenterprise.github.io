@@ -90,7 +90,6 @@ function getTransactionEntries(doTransition = true) {
                 $("main").attr("class", "article");
                 $("#transactionEntriesHeader").fadeIn(500);
                 $("#transactionEntries").fadeIn(500);
-                $("#transactionEntriesEmpty").hide();
         
                 try {
                     var blockchain = JSON.parse(getConsensus(multiBlockchain));
@@ -126,6 +125,7 @@ function getTransactionEntries(doTransition = true) {
                         }
                     }
 
+                    $("#transactionEntriesEmpty").hide();
                     $("#transactionEntriesError").hide();
 
                     if (orderedEntries.length > 0 || balanceDifference != 0) {
