@@ -69,7 +69,7 @@ function addTransactionEntry(sender, receiver, amount = 0, timestamp = null) {
     } else { // Transaction is verified
         transactionEntry.append($("<span>")
             .text(_("verifiedTransaction"))
-            .attr("title", _("verifiedAt", lang.format(new Date((timestamp * 1000) + new Date().getTimezoneOffset() * 60 * 1000), lang.language, {
+            .attr("title", _("verifiedAt", lang.format(new Date((timestamp * 1000) - (new Date().getTimezoneOffset() * 60 * 1000)), lang.language, {
                 dateStyle: "full",
                 timeStyle: "full"
             })))
