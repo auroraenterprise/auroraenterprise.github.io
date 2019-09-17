@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!--
+    Aurora Website
+    
+    Copyright (C) Aurora Enterprise. All Rights Reserved.
+    
+    https://aur.xyz
+    Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
+-->
+<html>
+    <head>
+        <title>@auroraAuracoin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <link rel="shortcut icon" href="../media/Aurora Logo.png">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../lib/fonts.css">
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/chart.min.js"></script>
+        <script src="../lib/jsrsasign.min.js"></script>
+        <script src="../lib/crypto.min.js"></script>
+        <script src="../funcs/core/script.js"></script>
+        <script src="../funcs/lang/script.js"></script>
+        <script src="../funcs/headerMenus/script.js"></script>
+        <script src="../funcs/tabs/script.js"></script>
+        <script src="../lang/en-GB.js"></script>
+        <script src="../script.js"></script>
+        <script src="script.js"></script>
+        <script src="setup.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="../coin/index.html" title="@goHome"><img src="../media/Auracoin Logo.png" id="headerLogo"></a>
+            <div class="headerRight">
+                <a href="../coin/index.html" class="headerButton">@auracoin</a>
+            </div>
+        </header>
+        <main class="center">
+            <div id="setUpWallet">
+                <h1>@setUpWallet</h1>
+                <p>@infoSetUpWallet</p>
+                <div>
+                    <p>@newWalletKeys</p>
+                </div>
+                <button onclick="generateWallet();">@generateWalletKeys</button>
+                <p class="secondary">@or</p>
+                <div>
+                    <p>@existingWalletKeys</p>
+                    <input placeholder="@auracoinAddress" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="address">
+                    <input placeholder="@privateKey" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="privateKey">
+                    <div>
+                        <button onclick="window.location.href = '../coin/index.html';" class="secondary">@cancel</button>
+                        <button onclick="setUpWallet();">@openWallet</button>
+                    </div>
+                    <p id="setUpWalletError"></p>
+                </div>
+            </div>
+            <div id="generateWalletLoading">
+                <div class="spinner centralLoadingSpinner"></div>
+                <div class="centralLoadingSpinnerMotivationalWords">
+                    <small>@generateWalletLoadingMotivationalWords</small>
+                </div>
+            </div>
+            <div id="generateWalletError">
+                <h1>@generateWalletError</h1>
+                <p>@generateWalletErrorDescription</p>
+                <p><code id="generateWalletErrorCode"></code></p>
+                <button onclick="generateWallet();">@retry</button>
+            </div>
+            <div id="generateWalletResult">
+                <h1>@generateWalletResult</h1>
+                <p>@generateWalletResultDescription</p>
+                <div>
+                    <small>@auracoinAddress</small><br>
+                    <pre id="generateWalletResultAddress">----------</pre>
+                </div>
+                <div>
+                    <small>@publicKey</small><br>
+                    <pre id="generateWalletResultPublicKey">----------------------------------------------------------------</pre>
+                </div>
+                <div>
+                    <small>@privateKey</small><br>
+                    <pre id="generateWalletResultPrivateKey">--------------------------------------------------------------------------------------------------------------------------------</pre>
+                </div>
+                <button onclick="window.location.href = 'index.html';">@openWallet</button>
+            </div>
+        </main>
+    </body>
+</html>

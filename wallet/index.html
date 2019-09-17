@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<!--
+    Aurora Website
+    
+    Copyright (C) Aurora Enterprise. All Rights Reserved.
+    
+    https://aur.xyz
+    Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
+-->
+<html>
+    <head>
+        <title>@auroraAuracoin</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <link rel="shortcut icon" href="../media/Aurora Logo.png">
+        <link rel="stylesheet" href="../style.css">
+        <link rel="stylesheet" href="../lib/fonts.css">
+        <script src="../lib/jquery.min.js"></script>
+        <script src="../lib/chart.min.js"></script>
+        <script src="../lib/jsrsasign.min.js"></script>
+        <script src="../lib/crypto.min.js"></script>
+        <script src="../funcs/core/script.js"></script>
+        <script src="../funcs/lang/script.js"></script>
+        <script src="../funcs/headerMenus/script.js"></script>
+        <script src="../funcs/tabs/script.js"></script>
+        <script src="../lang/en-GB.js"></script>
+        <script src="../script.js"></script>
+        <script src="script.js"></script>
+        <script src="index.js"></script>
+    </head>
+    <body>
+        <header>
+            <a href="index.html" title="@goHome"><img src="../media/Auracoin Logo.png" id="headerLogo"></a>
+            <div class="headerRight">
+                <a href="index.html" class="headerButton selected desktop">@dashboard</a>
+                <a href="transactions.html" class="headerButton">@transactions</a>
+                <a href="javascript:headerMenus.show('settings');" class="headerButton">
+                    <span>@settings</span>
+                    <i class="icon">arrow_drop_down</i>
+                </a>
+            </div>
+            <div class="headerMenu" name="settings">
+                <a href="../coin/index.html" class="headerMenuItem">
+                    <img src="../media/Icons/Exit.png" alt="" class="headerMenuItemThumbnail">
+                    <div>@exitWallet</div>
+                </a>
+            </div>
+        </header>
+        <main class="center">
+            <h1 id="bigAmount"><a href="javascript:switchAmount();" class="invisible"><span class="amountSymbol">A </span><span class="currentAuracoin amountContent">--</span></a></h1>
+            <div name="sendReceive" class="tabGroup">
+                <div name="send" class="tab">
+                    <button onclick="tabs.select('send', 'sendReceive');" class="tabButton selected">@send</button>
+                    <button onclick="tabs.select('receive', 'sendReceive');" class="tabButton">@receive</button>
+                    <p>@enterAddressAndAmount</p>
+                    <input placeholder="@auracoinAddress" autocorrect="off" autocapitalize="off" spellcheck="false" class="code" id="sendAddress">
+                    <select selected="auracoin" class="amountSymbol" id="sendSymbol">
+                        <option value="auracoin">A </option>
+                        <option value="auro">A.</option>
+                    </select>
+                    <input type="number" placeholder="@amount" min="0" class="amountValue" id="sendAmount">
+                    <p><small>@percentOfBalance|<span id="sendPercentBalance">0</span></small></p>
+                    <button onclick="makeTransaction();" id="sendButton">@send</button>
+                    <p id="sendError"></p>
+                    <p><code id="sendErrorCode"></code></p>
+                </div>
+                <div name="receive" class="tab selected">
+                    <button onclick="tabs.select('send', 'sendReceive');" class="tabButton">@send</button>
+                    <button onclick="tabs.select('receive', 'sendReceive');" class="tabButton selected">@receive</button>
+                    <p>@thisAddress|<code class="currentAddress">--------</code></p>
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Aurora FTW!&bgcolor=f1f1f1&color=aaaaaa" class="currentAddressQRTab" />
+                </div>
+            </div>
+        </main>
+    </body>
+</html>

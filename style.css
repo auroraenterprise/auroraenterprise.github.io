@@ -1,3 +1,12 @@
+/*
+    Aurora Website
+    
+    Copyright (C) Aurora Enterprise. All Rights Reserved.
+    
+    https://aur.xyz
+    Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
+*/
+
 :root {
     --primaryColour: #35bde7;
     --secondaryColour: #8eCf70;
@@ -5,9 +14,21 @@
     --primaryBackgroundColour: #3d3d3d;
     --primaryForegroundColour: #f0f0f0;
     --primaryOverlayColour: rgba(255, 255, 255, 0.2);
+    --primaryOverlayColourFade: rgba(255, 255, 255, 0.05);
     --secondaryBackgroundColour: #f0f0f0;
     --secondaryForegroundColour: #262626;
     --secondaryOverlayColour: rgba(0, 0, 0, 0.2);
+    --secondaryTextColour: rgba(255, 255, 255, 0.5);
+    --codeBlockBackgroundColor: #4e4e4e;
+    --codeBlockForegroundColor: #f0f0f0;
+    --buttonForegroundColour: white;
+    --inputBackgroundColour: white;
+    --inputForegroundColour: black;
+    --inputOutlineColour: #cccccc;
+    --inputHoverColour: #dddddd;
+    --selectedBackgroundColour: rgba(0, 0, 0, 0.2);
+    --newTransactionEntry: #676767;
+    --spinnerLoaderRadius: 30px;
 }
 
 * {
@@ -16,6 +37,7 @@
 
 body {
     margin: 0;
+    margin-bottom: 20px;
     background-color: var(--primaryBackgroundColour);
     color: var(--primaryForegroundColour);
     font-size: 20px;
@@ -27,21 +49,93 @@ header {
     left: 0;
     width: calc(100% - 20px);
     padding: 10px;
+    background-color: var(--primaryBackgroundColour);
     z-index: 1;
 }
 
 main {
     margin-top: 75px;
     padding: 10px;
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
 }
 
-h1 {
+div.spinner, div.spinner::before, div.spinner::after {
+    border-radius: 50%;
+}
+
+div.spinner {
+    position: relative;
+    width: calc(var(--spinnerLoaderRadius) * 2);
+    height: calc(var(--spinnerLoaderRadius) * 2);
+    margin: calc(var(--sizeSpinnerBorderWidth) + 10px) auto;
+    color: var(--primaryColour);
+    box-shadow: inset 0 0 0 10px;
+    -moz-transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+div.spinner::before, div.spinner::after {
+    position: absolute;
+    content: "";
+}
+
+div.spinner::before {
+    top: -1px;
+    left: -1px;
+    width: calc(var(--spinnerLoaderRadius) + 2px);
+    height: calc(calc(var(--spinnerLoaderRadius) * 2) + 2px);
+    background-color: var(--primaryBackgroundColour);
+    border-radius: calc(calc(var(--spinnerLoaderRadius) * 2) + 2px) 0 0 calc(calc(var(--spinnerLoaderRadius) * 2) + 2px);
+    -moz-transform-origin: calc(var(--spinnerLoaderRadius) + 2px) calc(var(--spinnerLoaderRadius) + 1px);
+    -webkit-transform-origin: calc(var(--spinnerLoaderRadius) + 2px) calc(var(--spinnerLoaderRadius) + 1px);
+    transform-origin: calc(var(--spinnerLoaderRadius) + 2px) calc(var(--spinnerLoaderRadius) + 1px);
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -moz-animation: spinner 2s infinite ease 1.5s;
+    -webkit-animation: spinner 2s infinite ease 1.5s;
+    animation: spinner 2s infinite ease 1.5s;
+}
+
+div.spinner::after {
+    top: -1px;
+    left: var(--spinnerLoaderRadius);
+    width: calc(var(--spinnerLoaderRadius) + 2px);
+    height: calc(calc(var(--spinnerLoaderRadius) * 2) + 2px);
+    background-color: var(--primaryBackgroundColour);
+    border-radius: 0 calc(calc(var(--spinnerLoaderRadius) * 2) + 2px) calc(calc(var(--spinnerLoaderRadius) * 2) + 2px) 0;
+    -moz-transform-origin: 0 calc(var(--spinnerLoaderRadius) + 1px);
+    -webkit-transform-origin: 0 calc(var(--spinnerLoaderRadius) + 1px);
+    transform-origin: 0 calc(var(--spinnerLoaderRadius) + 1px);
+    -moz-transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    -moz-animation: spinner 2s infinite ease;
+    -webkit-animation: spinner 2s infinite ease;
+    animation: spinner 2s infinite ease;
+}
+
+h1, h1 * {
     font-family: "Quicksand", sans-serif;
 }
 
-code, pre {
+p.secondary {
+    color: var(--secondaryTextColour);
+}
+
+code, code *, pre, pre * {
     font-family: "Roboto Mono", monospace;
+}
+
+pre {
+    display: inline-block;
+    width: calc(50% - 40px);
+    margin: 8px 10px;
+    padding: 14px 20px;
+    background-color: var(--codeBlockBackgroundColor);
+    color: var(--codeBlockForegroundColor);
+    overflow: auto;
 }
 
 a {
@@ -49,8 +143,86 @@ a {
     text-decoration: none;
 }
 
+a.invisible {
+    color: white;
+}
+
 a:hover {
     text-decoration: underline;
+}
+
+button {
+    width: calc(25% - 10px);
+    margin: 8px 10px;
+    padding: 14px 20px;
+    background-color: var(--secondaryColour);
+    color: white;
+    border: none;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+button.secondary {
+    background-color: var(--primaryColour);
+}
+
+button.bad {
+    background-color: var(--badColour);
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+button:disabled {
+    background-color: var(--codeBlockBackgroundColor);
+    color: var(--codeBlockForegroundColor);
+}
+
+button:disabled:hover {
+    opacity: 1;
+}
+
+input, select {
+    display: inline-block;
+    width: 50%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    background-color: var(--inputBackgroundColour);
+    border: 1px solid var(--inputOutlineColour);
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input.code:not(:placeholder-shown) {
+    font-family: "Roboto Mono", monospace;
+    font-size: 17px;
+}
+
+.desktop {
+    display: unset;
+}
+
+.mobile {
+    display: none;
+}
+
+.left {
+    text-align: left;
+}
+
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.article {
+    margin-left: 20vw;
+    margin-right: 20vw;
+    text-align: left;
 }
 
 .headerRight {
@@ -69,6 +241,14 @@ a:hover {
 
 .headerButton:hover {
     text-decoration: none;
+}
+
+.headerButton.selected {
+    background-color: var(--primaryOverlayColour);
+}
+
+.headerButton.selected.fade {
+    background-color: var(--primaryOverlayColourFade);
 }
 
 .headerButton.active {
@@ -107,6 +287,126 @@ a:hover {
     padding: 10px;
 }
 
+.tab {
+    display: none;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    padding-bottom: 10px;
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--secondaryForegroundColour);
+}
+
+.tab.selected {
+    display: block;
+}
+
+.tab p {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.tab button {
+    width: calc(50% - 25px);
+}
+
+.tabButton {
+    background-color: transparent;
+    color: var(--secondaryForegroundColour);
+}
+
+.tabButton.selected {
+    background-color: var(--selectedBackgroundColour);
+}
+
+.tab input {
+    width: calc(100% - 25px);
+}
+
+.centralLoadingSpinner {
+    position: fixed!important;
+    top: calc(50vh - 60px);
+    left: calc(50vw - 30px);
+}
+
+.centralLoadingSpinnerMotivationalWords {
+    position: fixed!important;
+    top: calc(50vh + 10px);
+    left: 10px;
+    width: calc(100vw - 20px);
+    text-align: center;
+}
+
+.amountSymbol {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 55px;
+}
+
+.amountValue {
+    width: calc(100% - 85px)!important;
+}
+
+.transactionEntry {
+    padding: 10px;
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--secondaryForegroundColour);
+    overflow: auto;
+}
+
+.transactionEntry:hover {
+    background-color: var(--inputHoverColour);
+}
+
+.transactionEntry:not(:last-child) {
+    border-bottom: 2px solid var(--inputOutlineColour);
+}
+
+.transactionEntry > * {
+    display: inline-block;
+    cursor: default;
+}
+
+.transactionEntry > :nth-child(1), .transactionEntry > :nth-child(3) {
+    width: 120px;
+}
+
+.transactionEntry > :nth-child(4), .transactionEntry > :nth-child(5) {
+    float: right;
+    width: 140px;
+}
+
+.transactionEntry > :nth-child(4) {
+    text-align: right;
+    cursor: help;
+}
+
+.transactionEntry > :nth-child(5) {
+    cursor: help;
+}
+
+.transactionEntry.newTransaction > :nth-child(5) {
+    text-decoration: none;
+}
+
+.transactionEntry > code > strong {
+    cursor: help;
+}
+
+.transactionEntry > .positive {
+    color: #4fd12e;
+}
+
+.transactionEntry > .negative {
+    color: #eb3434;
+}
+
+.transactionEntry.newTransaction {
+    background-color: var(--newTransactionEntry);
+    color: white;
+    border-bottom: none;
+}
+
 #headerLogo {
     margin-left: 10px;
     height: 50px;
@@ -119,6 +419,11 @@ a:hover {
     width: 75%;
 }
 
+#bigAmount {
+    margin-top: 10px;
+    font-size: 10vh;
+}
+
 #displayChartHolder {
     position: absolute;
     top: calc(80vh + 30px);
@@ -127,6 +432,67 @@ a:hover {
     height: 20vh;
     overflow: hidden;
 }
+
+#cornerGraphic {
+    position: absolute;
+    top: 50vh;
+    right: 0;
+    height: 50vh;
+}
+
+#generateWalletLoading, #generateWalletError, #generateWalletResult {
+    display: none;
+}
+
+#transactionEntriesHeader, #transactionEntries, #transactionEntriesEmpty, #transactionEntriesError {
+    display: none;
+}
+
+/* Animation keyframes */
+
+@-moz-keyframes spinner {
+    0% {
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@-webkit-keyframes spinner {
+    0% {
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spinner {
+    0% {
+        -moz-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(-180deg);
+    }
+
+    100% {
+        -moz-transform: rotate(360deg);
+        -webkit-transform: rotate(360deg);
+        transform: rotate(180deg);
+    }
+}
+
+/* Media queries */
 
 @media (max-width: 800px) {
     .desktop {
@@ -137,8 +503,54 @@ a:hover {
         display: unset;
     }
 
+    .article {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     #displayChartHolder {
         top: calc(60vh + 30px);
         height: 40vh;
+    }
+}
+
+@media (max-width: 650px) {
+    .transactionEntry > :nth-child(3) {
+        width: 60%;
+    }
+
+    .transactionEntry > :nth-child(4), .transactionEntry > :nth-child(5) {
+        width: 50%;
+    }
+}
+
+@media (max-width: 600px) {
+    input {
+        width: 80%;
+    }
+
+    pre {
+        width: calc(80% - 40px);
+        margin: 8px 5px;
+    }
+
+    button {
+        width: 80%;
+        margin: 8px 5px;
+    }
+
+    .tab {
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .tab button {
+        width: calc(100% - 25px);
+    }
+
+    .transactionEntry > :nth-child(3) {
+        width: unset;
     }
 }
