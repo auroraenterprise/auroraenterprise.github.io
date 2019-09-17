@@ -159,6 +159,7 @@ button {
     color: white;
     border: none;
     font-size: 16px;
+    transition: 0.5s;
 }
 
 button.secondary {
@@ -171,6 +172,15 @@ button.bad {
 
 button:hover {
     opacity: 0.8;
+}
+
+button:disabled {
+    background-color: var(--codeBlockBackgroundColor);
+    color: var(--codeBlockForegroundColor);
+}
+
+button:disabled:hover {
+    opacity: 1;
 }
 
 input, select {
@@ -312,6 +322,20 @@ input.code:not(:placeholder-shown) {
     width: calc(100% - 25px);
 }
 
+.centralLoadingSpinner {
+    position: fixed!important;
+    top: calc(50vh - 60px);
+    left: calc(50vw - 30px);
+}
+
+.centralLoadingSpinnerMotivationalWords {
+    position: fixed!important;
+    top: calc(50vh + 10px);
+    left: 10px;
+    width: calc(100vw - 20px);
+    text-align: center;
+}
+
 .amountSymbol {
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -340,6 +364,7 @@ input.code:not(:placeholder-shown) {
 
 .transactionEntry > * {
     display: inline-block;
+    cursor: default;
 }
 
 .transactionEntry > :nth-child(1), .transactionEntry > :nth-child(3) {
@@ -353,10 +378,19 @@ input.code:not(:placeholder-shown) {
 
 .transactionEntry > :nth-child(4) {
     text-align: right;
+    cursor: help;
 }
 
-.transactionEntry > .me {
-    font-weight: 700;
+.transactionEntry > :nth-child(5) {
+    cursor: help;
+}
+
+.transactionEntry.newTransaction > :nth-child(5) {
+    text-decoration: none;
+}
+
+.transactionEntry > code > strong {
+    cursor: help;
 }
 
 .transactionEntry > .positive {
@@ -410,17 +444,8 @@ input.code:not(:placeholder-shown) {
     display: none;
 }
 
-#generateWalletLoadingSpinner {
-    position: absolute;
-    top: calc(50vh - 60px);
-    left: calc(50vw - 30px);
-}
-
-#generateWalletLoadingMotivationalWords {
-    position: absolute;
-    top: calc(50vh + 10px);
-    left: 10px;
-    width: calc(100vw - 20px);
+#transactionEntriesHeader, #transactionEntries, #transactionEntriesEmpty, #transactionEntriesError {
+    display: none;
 }
 
 /* Animation keyframes */

@@ -48,6 +48,12 @@
         <main class="article">
             <p id="transactionEntriesHeader">@totalAmount|<a href="javascript:switchAmount();" class="invisible"><strong><span class="amountSymbol">A </span><span class="currentAuracoin amountContent">--</span></strong></a></p>
             <div id="transactionEntries"></div>
+            <div id="transactionEntriesLoading">
+                <div class="spinner centralLoadingSpinner"></div>
+                <div class="centralLoadingSpinnerMotivationalWords">
+                    <small>@transactionEntriesLoadingMotivationalWords</small>
+                </div>
+            </div>
             <div id="transactionEntriesEmpty">
                 <h1>@transactionEntriesEmpty</h1>
                 <p>@transactionEntriesEmptyDescription</p>
@@ -58,7 +64,7 @@
                 <h1>@transactionEntriesError</h1>
                 <p>@transactionEntriesErrorDescription</p>
                 <p><code id="generateWalletErrorCode"></code></p>
-                <button onclick="getTransactionEntries();">@retry</button>
+                <button onclick="retryTransactionEntries();">@retry</button>
             </div>
         </main>
     </body>

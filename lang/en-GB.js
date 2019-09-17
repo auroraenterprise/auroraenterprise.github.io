@@ -34,6 +34,7 @@
             "cancel": "Cancel",
             "retry": "Retry",
             "loadMore": "Load more",
+            "loadingMore": "Loading...",
             "or": "or",
             "fieldsRequiredError": "Sorry! It appears that you have not filled in all of the required fields.",
 
@@ -60,6 +61,9 @@
             "processingTransaction": "Processing...",
             "processingTransactionTooltip": "This transaction is still being processed. Transactions take around 2 minutes to process, and when it is verified it will be shown below.",
             "verifiedTransaction": "Verified",
+            "verifiedAt": "Verified on {0}",
+            "thisIsYou": "This is your address.",
+            "transactionEntriesLoadingMotivationalWords": "Loading your history...",
             "transactionEntriesEmpty": "There are no transactions yet!",
             "transactionEntriesEmptyDescription": "When you send and receive Auracoin, your transactions appear here.",
             "viewMyAddressInfo": "View address to receive Auracoin",
