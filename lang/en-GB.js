@@ -59,7 +59,7 @@
             "sendCodeError": "Sorry! An error occurred whilst adding your transaction:",
             "unconfirmedTransaction": "Unconfirmed",
             "processingTransaction": "Processing...",
-            "processingTransactionTooltip": "This transaction is still being processed. Transactions take around 2 minutes to process, and when it is verified it will be shown below.",
+            "processingTransactionTooltip": "This transaction is still being processed. Transactions can take around 2 minutes to process, and when they are verified they will be shown below.",
             "verifiedTransaction": "Verified",
             "verifiedAt": "Verified on {0}",
             "thisIsYou": "This is your address.",
