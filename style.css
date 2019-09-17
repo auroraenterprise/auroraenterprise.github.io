@@ -408,15 +408,16 @@ input.code:not(:placeholder-shown) {
 }
 
 #headerLogo {
-    margin-left: 10px;
     height: 50px;
+    margin-left: 10px;
 }
 
 #tagline {
-    font-size: 10vw;
+    width: 75%;
+    max-height: 50vh;
     margin-top: 10vh;
     margin-left: 5vw;
-    width: 75%;
+    font-size: 10vw;
 }
 
 #bigAmount {
