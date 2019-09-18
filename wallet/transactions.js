@@ -7,9 +7,9 @@
     Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
 */
 
-const PAGINATION_INCREASE_AMOUNT = 20;
+const PAGINATION_INCREASE_AMOUNT = 10;
 
-var paginationAmount = PAGINATION_INCREASE_AMOUNT;
+var paginationAmount = PAGINATION_INCREASE_AMOUNT * 2;
 
 function addTransactionEntry(sender, receiver, amount = 0, timestamp = null) {
     var transactionEntry = $("<div class='transactionEntry'>");
@@ -83,7 +83,7 @@ function getTransactionEntries(doTransition = true) {
     getAddressBalance(keys.address, function(balance) {
         var balanceDifference = balance;
 
-        getNodeValues("/getBlockchain?cutoff=" + paginationAmount, function(multiBlockchain) {
+        getNodeValues("/getBlockchain?cutoff=" + (paginationAmount + PAGINATION_INCREASE_AMOUNT), function(multiBlockchain) {
             $("#transactionEntriesLoading").fadeOut(500);
 
             setTimeout(function() {
