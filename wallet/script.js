@@ -32,12 +32,8 @@ function loadKeys() {
 function getPeersList(callback = function() {}, error = function() {}, address = "https://aur.xyz/auracoin-peers/", type = "main", level = "firstlevel") {
     $.ajax({
         url: address + type + "-" + level + ".aup",
-        success: function(data) {
-            callback(data + "\n" + data.replace(/\n/g, "\nhttps://liveg.tech/cors?url="));
-        },
-        error: function() {
-            error(...arguments);
-        }
+        success: callback,
+        error: error
     });
 }
 
@@ -63,6 +59,14 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
                 !element.startsWith("#")
             );
         });
+
+        var proxiedPeers = [];
+
+        for (var i = 0; i < peers.length; i++) {
+            proxiedPeers.push("https://liveg.tech/cors?url=" + peers[i]);
+        }
+
+        peers = peers.concat(proxiedPeers);
 
         var peerResults = {};
         var peerCount = 0;
@@ -193,3 +197,23 @@ function switchAmount() {
 
     updateAmountReadout();
 }
+
+$(function() {
+    if (getURLParameter("plURL") != null || localStorage.getItem("plURL") != null) {
+        peersListArguments[0] = getURLParameter("plURL") || localStorage.getItem("plURL");
+
+        localStorage.setItem("plURL", getURLParameter("plURL"));
+    }
+
+    if (getURLParameter("plNetwork") != null || localStorage.getItem("plNetwork") != null) {
+        peersListArguments[1] = getURLParameter("plNetwork") || localStorage.getItem("plNetwork");
+
+        localStorage.setItem("plNetwork", getURLParameter("plNetwork"));
+    }
+
+    if (getURLParameter("plLevel") != null || localStorage.getItem("plLevel") != null) {
+        peersListArguments[2] = getURLParameter("plLevel") || localStorage.getItem("plLevel");
+
+        localStorage.setItem("plLevel", getURLParameter("plLevel"));
+    }
+});
