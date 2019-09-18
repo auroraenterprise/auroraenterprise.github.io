@@ -38,14 +38,16 @@ function getPeersList(callback = function() {}, error = function() {}, address =
 }
 
 function getConsensus(data) {
-    if (Object.keys(data).length > 0) {
-        return Object.keys(data).reduce(function(a, b) {
+    if (Object.keys(data["hash"]).length > 0) {
+        var hash = Object.keys(data["hash"]).reduce(function(a, b) {
             if (data[a] > data[b]) {
                 return a;
             } else {
                 return b;
             }
         });
+
+        return data["data"][hash];
     } else {
         return null;
     }
@@ -63,12 +65,13 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
         var proxiedPeers = [];
 
         for (var i = 0; i < peers.length; i++) {
-            proxiedPeers.push("https://liveg.tech/cors?url=" + peers[i]);
+            proxiedPeers.push("https://crossrun.herokuapp.com/" + peers[i]);
         }
 
         peers = peers.concat(proxiedPeers);
 
-        var peerResults = {};
+        var peerResultsHash = {};
+        var peerResultsData = {};
         var peerCount = 0;
 
         if (peers.length > 0) {
@@ -76,23 +79,25 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
                 $.ajax({
                     url: peers[i] + command,
                     success: function(data) {
-                        if (typeof peerResults[data] == "number") {
-                            peerResults[data]++;
+                        peerResultsData[CryptoJS.SHA256(data)] = data;
+
+                        if (typeof peerResultsHash[data] == "number") {
+                            peerResultsHash[CryptoJS.SHA256(data)]++;
                         } else {
-                            peerResults[data] = 1;
+                            peerResultsHash[CryptoJS.SHA256(data)] = 1;
                         }
 
                         peerCount++;
 
                         if (peerCount >= peers.length) {
-                            callback(peerResults);
+                            callback({hash: peerResultsHash, data: peerResultsData});
                         }
                     },
                     error: function() {
                         peerCount++;
 
                         if (peerCount >= peers.length) {
-                            callback(peerResults);
+                            callback({hash: peerResultsHash, data: peerResultsData});                            
                         }
                     }
                 });
@@ -199,19 +204,19 @@ function switchAmount() {
 }
 
 $(function() {
-    if (getURLParameter("plURL") != null || localStorage.getItem("plURL") != null) {
+    if (getURLParameter("plURL") != null || (localStorage.getItem("plURL") != null && localStorage.getItem("plURL") != "null")) {
         peersListArguments[0] = getURLParameter("plURL") || localStorage.getItem("plURL");
 
         localStorage.setItem("plURL", getURLParameter("plURL"));
     }
 
-    if (getURLParameter("plNetwork") != null || localStorage.getItem("plNetwork") != null) {
+    if (getURLParameter("plNetwork") != null || (localStorage.getItem("plNetwork") != null && localStorage.getItem("plNetwork") != "null")) {
         peersListArguments[1] = getURLParameter("plNetwork") || localStorage.getItem("plNetwork");
 
         localStorage.setItem("plNetwork", getURLParameter("plNetwork"));
     }
 
-    if (getURLParameter("plLevel") != null || localStorage.getItem("plLevel") != null) {
+    if (getURLParameter("plLevel") != null || (localStorage.getItem("plLevel") != null && localStorage.getItem("plLevel") != "null")) {
         peersListArguments[2] = getURLParameter("plLevel") || localStorage.getItem("plLevel");
 
         localStorage.setItem("plLevel", getURLParameter("plLevel"));

@@ -83,7 +83,7 @@ function getTransactionEntries(doTransition = true) {
     getAddressBalance(keys.address, function(balance) {
         var balanceDifference = balance;
 
-        getNodeValues("/getBlockchain", function(multiBlockchain) {
+        getNodeValues("/getBlockchain?cutoff=" + paginationAmount, function(multiBlockchain) {
             $("#transactionEntriesLoading").fadeOut(500);
 
             setTimeout(function() {
@@ -96,6 +96,10 @@ function getTransactionEntries(doTransition = true) {
                     var orderedEntries = [];
 
                     $("#transactionEntries").empty();
+
+                    if (blockchain != null) {
+                        balanceDifference -= blockchain["verifiedAmounts"][keys.address];
+                    }
             
                     for (var i = 0; i < blockchain.blocks.length; i++) {
                         for (var j = 0; j < blockchain.blocks[i].data.length; j++) {
@@ -109,8 +113,6 @@ function getTransactionEntries(doTransition = true) {
                                         amount: -blockData.body.amount,
                                         timestamp: blockchain.blocks[i].timestamp
                                     });
-
-                                    balanceDifference += blockData.body.amount;
                                 } else if (blockData.body.receiver == keys.address) {
                                     orderedEntries.unshift({
                                         sender: blockData.body.sender,
@@ -118,8 +120,6 @@ function getTransactionEntries(doTransition = true) {
                                         amount: blockData.body.amount,
                                         timestamp: blockchain.blocks[i].timestamp
                                     });
-
-                                    balanceDifference -= blockData.body.amount;
                                 }
                             }
                         }
