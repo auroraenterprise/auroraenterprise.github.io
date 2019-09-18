@@ -32,8 +32,8 @@ function loadKeys() {
 function getPeersList(callback = function() {}, error = function() {}, address = "https://aur.xyz/auracoin-peers/", type = "main", level = "firstlevel") {
     $.ajax({
         url: address + type + "-" + level + ".aup",
-        success: function() {
-            callback(...arguments);
+        success: function(data) {
+            callback(data + "\n" + data.replace(/\n/g, "\nhttps://liveg.tech/cors?url="));
         },
         error: function() {
             error(...arguments);
