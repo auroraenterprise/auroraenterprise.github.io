@@ -209,18 +209,24 @@ $(function() {
     if (getURLParameter("plURL") != null || (localStorage.getItem("plURL") != null && localStorage.getItem("plURL") != "null")) {
         peersListArguments[0] = getURLParameter("plURL") || localStorage.getItem("plURL");
 
-        localStorage.setItem("plURL", getURLParameter("plURL"));
+        if (getURLParameter("plURL") != null) {
+            localStorage.setItem("plURL", getURLParameter("plURL"));
+        }
     }
 
     if (getURLParameter("plNetwork") != null || (localStorage.getItem("plNetwork") != null && localStorage.getItem("plNetwork") != "null")) {
         peersListArguments[1] = getURLParameter("plNetwork") || localStorage.getItem("plNetwork");
 
-        localStorage.setItem("plNetwork", getURLParameter("plNetwork"));
+        if (getURLParameter("plNetwork") != null) {
+            localStorage.setItem("plNetwork", getURLParameter("plNetwork"));
+        }
     }
 
     if (getURLParameter("plLevel") != null || (localStorage.getItem("plLevel") != null && localStorage.getItem("plLevel") != "null")) {
         peersListArguments[2] = getURLParameter("plLevel") || localStorage.getItem("plLevel");
 
-        localStorage.setItem("plLevel", getURLParameter("plLevel"));
+        if (getURLParameter("plLevel") != null) {
+            localStorage.setItem("plLevel", getURLParameter("plLevel"));
+        }
     }
 });
