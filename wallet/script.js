@@ -179,6 +179,7 @@ function updateAmountReadout() {
 
         $(".currentAuro").text(currentAuro);
         $(".currentAuracoin").text(currentAuracoin);
+        $("title").text(_("auroraAuracoinAmount", "A " + currentAuracoin));
     }, peersListArguments);
 }
 

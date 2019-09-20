@@ -14,7 +14,8 @@
         textDirection: "ltr",
         strings: {
             "aurora": "Aurora",
-            "auroraAuracoin": "Aurora - Auracoin",
+            "auroraAuracoin": "Auracoin - Aurora",
+            "auroraAuracoinAmount": "({0}) Auracoin - Aurora",
 
             "goHome": "Go to main page",
             "home": "Home",
