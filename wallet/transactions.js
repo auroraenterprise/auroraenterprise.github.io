@@ -83,7 +83,7 @@ function getTransactionEntries(doTransition = true) {
     getAddressBalance(keys.address, function(balance) {
         var balanceDifference = balance;
 
-        getNodeValues("/getBlockchain?address=" + keys.address + "cutoff=" + (paginationAmount + PAGINATION_INCREASE_AMOUNT), function(multiBlockchain) {
+        getNodeValues("/getBlockchain?address=" + keys.address + "&cutoff=" + (paginationAmount + PAGINATION_INCREASE_AMOUNT), function(multiBlockchain) {
             $("#transactionEntriesLoading").fadeOut(500);
 
             setTimeout(function() {
