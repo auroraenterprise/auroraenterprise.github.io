@@ -67,7 +67,9 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
         var proxiedPeers = [];
 
         for (var i = 0; i < peers.length; i++) {
-            proxiedPeers.push(HTTP_PROXY + peers[i]);
+            if (!peers[i].startsWith("https://")) {
+                proxiedPeers.push(HTTP_PROXY + peers[i]);
+            }
         }
 
         peers = peers.concat(proxiedPeers);
