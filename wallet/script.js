@@ -232,4 +232,8 @@ $(function() {
             localStorage.setItem("plLevel", getURLParameter("plLevel"));
         }
     }
+
+    if (getURLParameter("address") != null) {
+        localStorage.setItem("currentSelectedAddress", getURLParameter("address"));
+    }
 });
