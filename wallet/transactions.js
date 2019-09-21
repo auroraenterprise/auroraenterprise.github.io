@@ -204,7 +204,7 @@ $(function() {
 
     setInterval(updateAmountReadout, 10000);
     setInterval(function() {
-        if (paginationAmount == PAGINATION_INCREASE_AMOUNT) {
+        if (paginationAmount == PAGINATION_INCREASE_AMOUNT * 2) {
             getTransactionEntries();
         }
     }, 10000);
