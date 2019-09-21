@@ -67,7 +67,7 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
         var proxiedPeers = [];
 
         for (var i = 0; i < peers.length; i++) {
-            if (!peers[i].startsWith("https://")) {
+            if (!peers[i].startsWith("https://") && !peers[i].includes("serveo.net")) {
                 proxiedPeers.push(HTTP_PROXY + peers[i]);
             }
         }
