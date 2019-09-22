@@ -9,7 +9,7 @@
 
 :root {
     --primaryColour: #35bde7;
-    --secondaryColour: #8eCf70;
+    --secondaryColour: #8ecf70;
     --badColour: #f54242;
     --primaryBackgroundColour: #3d3d3d;
     --primaryForegroundColour: #f0f0f0;
@@ -56,7 +56,47 @@ header {
 main {
     margin-top: 75px;
     padding: 10px;
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 95px);
+}
+
+section {
+    position: relative;
+    padding: 16px;
+    padding-left: calc(5vw + 10px);
+    padding-right: calc(5vw + 10px);
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--secondaryForegroundColour);
+}
+
+section.withIcon {
+    padding-left: calc(20vw + 10px);
+}
+
+section.withIcon > img {
+    position: absolute;
+    top: 45px;
+    left: calc(5vw + 10px);
+    width: 10vw;
+}
+
+section.stats {
+    min-height: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color: var(--inputHoverColour);
+    color: var(--secondaryForegroundColour);
+}
+
+section.stats > div {
+    width: 25%;
+    margin-bottom: 25px;
+    float: left;
+    text-align: center;
+}
+
+section.stats > div > span:nth-child(1) {
+    display: block;
+    font-size: 50px;
 }
 
 div.spinner, div.spinner::before, div.spinner::after {
@@ -496,6 +536,14 @@ input.code:not(:placeholder-shown) {
 /* Media queries */
 
 @media (max-width: 800px) {
+    section.stats {
+        min-height: 225px;
+    }
+
+    section.stats > div {
+        width: 50%;
+    }
+
     .desktop {
         display: none;
     }
@@ -526,6 +574,16 @@ input.code:not(:placeholder-shown) {
 }
 
 @media (max-width: 600px) {
+    section.withIcon {
+        padding-left: calc(5vw + 10px);
+    }
+
+    section.withIcon > img {
+        position: unset;
+        width: 20vw;
+        margin-top: 25px;
+    }
+
     input {
         width: 80%;
     }
@@ -547,6 +605,15 @@ input.code:not(:placeholder-shown) {
 }
 
 @media (max-width: 400px) {
+    section.stats {
+        min-height: 400px;
+    }
+    
+    section.stats > div {
+        width: 100%;
+        float: none;
+    }
+
     .tab button {
         width: calc(100% - 25px);
     }

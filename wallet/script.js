@@ -31,7 +31,7 @@ function loadKeys() {
     keys.privateKey = keys.keyList[keys.address].privateKey;
 }
 
-function getPeersList(callback = function() {}, error = function() {}, address = "https://aur.xyz/auracoin-peers/", type = "main", level = "firstlevel") {
+function getPeerList(callback = function() {}, error = function() {}, address = "https://aur.xyz/auracoin-peers/", type = "main", level = "firstlevel") {
     $.ajax({
         url: address + type + "-" + level + ".aup",
         success: callback,
@@ -56,7 +56,7 @@ function getConsensus(data) {
 }
 
 function getNodeValues(command = "/", callback = function() {}, peersListArguments = []) {
-    getPeersList(function(data) {
+    getPeerList(function(data) {
         var peers = data.split("\n").filter(function(element) {
             return (
                 element.trim() != "" &&
@@ -101,7 +101,7 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
                         peerCount++;
 
                         if (peerCount >= peers.length) {
-                            callback({hash: peerResultsHash, data: peerResultsData});                            
+                            callback({hash: peerResultsHash, data: peerResultsData});
                         }
                     }
                 });
