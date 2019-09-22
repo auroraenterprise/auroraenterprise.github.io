@@ -41,7 +41,7 @@
             "auracoinLandingStatsTotalCirculation": "IN CIRCULATION",
             "auracoinLandingMinerHeading": "Help secure the Auracoin network.",
             "auracoinLandingMinerDescription": "As with many other cryptocurrencies, we allow you to help secure the Auracoin network by the process of mining in order to prevent potential breaches. Transform your computer into a node to help mine on the Auracoin network and receive an Auracoin as a reward whenever you successfully mine a block!",
-            "auracoinLandingDevelopersHeading": "Developers welcome.",
+            "auracoinLandingDevelopersHeading": "Developers most welcome.",
             "auracoinLandingDevelopersDescription": "Auracoin is built on a network of developers who help make Auracoin run perfectly and smoothly. Whether you want to contribute to Auracoin's code, or you want to utilise the API exposed by Auracoin nodes, you're most welcome in our GitHub community! If you ever need help, the community are here to answer anything.",
 
             "send": "Send",
