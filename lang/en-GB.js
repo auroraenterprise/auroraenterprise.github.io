@@ -29,7 +29,8 @@
             "trade": "Trade",
             "viewGithub": "View code on GitHub",
             "openWallet": "Open wallet",
-
+            "downloadMiner": "Download miner",
+            "auracoinLandingTagline": "Sending money anywhere? Simple.",
             "auracoinLandingIntroHeading": "Introducing Auracoin.",
             "auracoinLandingIntroDescription": "Auracoin is the cryptocurrency designed to be easy to use. Made for traders, miners and developers in mind, Auracoin is the cryptocurrency that everyone can use. Whether you're accepting Auracoin for your business, trading Auracoin for profit, mining Auracoin to strengthen the network, or developing applications that use the Auracoin network ─ we've got you covered!",
             "auracoinLandingWalletHeading": "Start trading now.",
@@ -38,6 +39,8 @@
             "auracoinLandingStatsMinersOnline": "MINERS ONLINE",
             "auracoinLandingStatsBlockHeight": "BLOCK HEIGHT",
             "auracoinLandingStatsTotalCirculation": "IN CIRCULATION",
+            "auracoinLandingMinerHeading": "Help secure the Auracoin network.",
+            "auracoinLandingMinerDescription": "As with many other cryptocurrencies, we allow you to help secure the Auracoin network by the process of mining in order to prevent potential breaches. Transform your computer into a node to help mine on the Auracoin network and receive an Auracoin as a reward whenever you successfully mine a block!",
 
             "send": "Send",
             "receive": "Receive",
