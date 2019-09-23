@@ -30,7 +30,7 @@
     </head>
     <body>
         <header>
-            <a href="index.html" title="@goHome"><img src="../media/Auracoin Logo.png" id="headerLogo"></a>
+            <a href="index.html" title="@goHome"><img src="../media/Auracoin Logo.png" alt="@altAuracoinLogo" id="headerLogo"></a>
             <div class="headerRight">
                 <a href="index.html" class="headerButton selected desktop">@dashboard</a>
                 <a href="transactions.html" class="headerButton">@transactions</a>
@@ -68,7 +68,7 @@
                     <button onclick="tabs.select('send', 'sendReceive');" class="tabButton">@send</button>
                     <button onclick="tabs.select('receive', 'sendReceive');" class="tabButton selected">@receive</button>
                     <p>@thisAddress|<code class="currentAddress">--------</code></p>
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Aurora FTW!&bgcolor=f1f1f1&color=aaaaaa" class="currentAddressQRTab" />
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Aurora FTW!&bgcolor=f1f1f1&color=aaaaaa" alt="QR code, this can be scanned by a mobile device for you to receive Auracoin" class="currentAddressQRTab" />
                 </div>
             </div>
         </main>

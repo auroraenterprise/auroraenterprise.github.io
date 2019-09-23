@@ -17,6 +17,9 @@
             "auroraAuracoin": "Auracoin - Aurora",
             "auroraAuracoinAmount": "({0}) Auracoin - Aurora",
 
+            "altAuroraLogo": "Aurora logo",
+            "altAuracoinLogo": "Auracoin logo",
+
             "goHome": "Go to main page",
             "home": "Home",
             "about": "About",
