@@ -69,6 +69,7 @@ section {
 }
 
 section.withIcon {
+    min-height: 220px;
     padding-left: calc(20vw + 10px);
 }
 
