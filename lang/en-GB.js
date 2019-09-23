@@ -34,7 +34,7 @@
             "auracoinLandingIntroHeading": "Introducing Auracoin.",
             "auracoinLandingIntroDescription": "Auracoin is the cryptocurrency designed to be easy to use. Made for traders, miners and developers in mind, Auracoin is the cryptocurrency that everyone can use. Whether you're accepting Auracoin for your business, trading Auracoin for profit, mining Auracoin to strengthen the network, or developing applications that use the Auracoin network ─ we've got you covered!",
             "auracoinLandingWalletHeading": "Start trading now.",
-            "auracoinLandingWalletDescription": "The best way to get into the world of Auracoin is to get an Auracoin wallet. Getting a wallet is something that you can do completely for free, and requires no personal information from you. You and everyone else remain anonymous at all times. You and everone else can also see each others' transactions and balances, making the system completely transparent.",
+            "auracoinLandingWalletDescription": "The best way to get into the world of Auracoin is to get an Auracoin wallet. Getting a wallet is something that you can do completely for free, and requires no personal information from you. You and everyone else remain anonymous at all times. You and everyone else can also see each others' transactions and balances, making the system completely transparent.",
             "auracoinLandingStatsMinersExisting": "AURACOIN MINERS",
             "auracoinLandingStatsMinersOnline": "MINERS ONLINE",
             "auracoinLandingStatsBlockHeight": "BLOCK HEIGHT",
