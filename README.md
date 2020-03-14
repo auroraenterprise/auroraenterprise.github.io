@@ -13,7 +13,7 @@ Here is a tree of the site and descriptions:
 ## Branches
 Here's the branches we're using:
 
-| Branch name | Branch description                                                                             |
-|-------------|------------------------------------------------------------------------------------------------|
-| master      | The live branch which is reflective of the content on the site (at [aur.xyz](https://aur.xyz). |
-| wallet      | The Auracoin wallet (WIP, but working at [aur.xyz/wallet](https://aur.xyz/wallet)).            |
+| Branch name | Branch description                                                                              |
+|-------------|-------------------------------------------------------------------------------------------------|
+| master      | The live branch which is reflective of the content on the site (at [aur.xyz](https://aur.xyz)). |
+| wallet      | The Auracoin wallet (WIP, but working at [aur.xyz/wallet](https://aur.xyz/wallet)).             |
