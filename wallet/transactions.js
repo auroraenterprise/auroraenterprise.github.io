@@ -67,6 +67,7 @@ function addTransactionEntry(sender, receiver, amount = 0, timestamp = null) {
             .attr("title", _("processingTransactionTooltip"))
         );
     } else { // Transaction is verified
+        console.log(timestamp);
         transactionEntry.append($("<span>")
             .text(_("verifiedTransaction"))
             .attr("title", _("verifiedAt", lang.format(new Date((timestamp * 1000) - (new Date().getTimezoneOffset() * 60 * 1000)), lang.language, {
@@ -154,7 +155,8 @@ function getTransactionEntries(doTransition = true) {
                         $("#transactionEntriesEmpty").fadeIn(500);
                         $("#transactionEntriesError").hide();
                     }
-                } catch {
+                } catch (e) {
+                    console.log(e);
                     $("main").attr("class", "center");
                     $("#transactionEntriesHeader").hide();
                     $("#transactionEntries").hide();

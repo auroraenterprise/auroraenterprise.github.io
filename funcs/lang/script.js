@@ -31,6 +31,8 @@ var lang = {
         if (code in lang.locales) {
             lang.language = code;
             lang.languageData = lang.locales[code];
+
+            $("html").attr("lang", lang.language);
         } else {
             if (code == "en-AU" || code == "en-US") {
                 lang.use("en-GB");
@@ -62,10 +64,8 @@ var lang = {
     },
 
     format: function(data, code, options = {}) {
-        if (data instanceof Number) {
+        if (data instanceof Number || data instanceof Date) {
             return data.toLocaleString(code, options);
-        } else if (data instanceof Date) {
-            return data.toLocaleDateString(code, options);
         } else {
             return data;
         }

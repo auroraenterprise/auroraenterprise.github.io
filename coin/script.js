@@ -24,7 +24,7 @@ function getStats() {
 
         for (var i = 0; i < peers.length; i++) {
             if (!peers[i].startsWith("https://") && !peers[i].includes("serveo.net")) {
-                proxiedPeers.push(HTTP_PROXY + peers[i]);
+                proxiedPeers.push(peers[i]);
             }
         }
 
@@ -32,8 +32,15 @@ function getStats() {
 
         if (peers.length > 0) {
             for (var i = 0; i < peers.length; i++) {
+                var proxyPrefix = "";
+
+                if (proxiedPeers.includes(peers[i])) {
+                    proxyPrefix = HTTP_PROXY;
+                }
+
                 $.ajax({
-                    url: peers[i],
+                    url: proxyPrefix + peers[i],
+                    timeout: 5000,
                     success: function() {
                         successfulPeers++;
 

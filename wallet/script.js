@@ -67,8 +67,8 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
         var proxiedPeers = [];
 
         for (var i = 0; i < peers.length; i++) {
-            if (!peers[i].startsWith("https://") && !peers[i].includes("serveo.net")) {
-                proxiedPeers.push(HTTP_PROXY + peers[i]);
+            if (!peers[i].startsWith("https://")) {
+                proxiedPeers.push(peers[i]);
             }
         }
 
@@ -80,8 +80,15 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
 
         if (peers.length > 0) {
             for (var i = 0; i < peers.length; i++) {
+                var proxyPrefix = "";
+
+                if (proxiedPeers.includes(peers[i])) {
+                    proxyPrefix = HTTP_PROXY;
+                }
+
                 $.ajax({
-                    url: peers[i] + command,
+                    url: proxyPrefix + peers[i] + command,
+                    timeout: 5000,
                     success: function(data) {
                         peerResultsData[CryptoJS.SHA256(data)] = data;
 
