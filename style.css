@@ -393,13 +393,6 @@ input.code:not(:placeholder-shown) {
     text-align: center;
 }
 
-.amountSymbol {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    width: 55px;
-}
-
 .amountValue {
     width: calc(100% - 85px)!important;
 }
@@ -502,13 +495,20 @@ input.code:not(:placeholder-shown) {
     display: none;
 }
 
-#transactionEntriesHeader, #transactionEntries, #transactionEntriesEmpty, #transactionEntriesError {
-    display: none;
-}
-
 #generateWalletResult div.info, #generateWalletResult div.warning {
     width: 50%;
     margin: auto;
+}
+
+#sendSymbol {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 55px;
+}
+
+#transactionEntriesHeader, #transactionEntries, #transactionEntriesEmpty, #transactionEntriesError {
+    display: none;
 }
 
 /* Animation keyframes */
