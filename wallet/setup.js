@@ -26,8 +26,6 @@ function generateWallet() {
 
             var status = getConsensus(data);
 
-            console.log(data);
-
             $("#generateWalletLoading").fadeOut(500);
 
             setTimeout(function() {

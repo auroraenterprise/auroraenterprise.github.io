@@ -123,7 +123,7 @@ function getPublicKey(address, callback = function() {}, peersListArguments = []
     getNodeValues("/getAddressPublicKey?address=" + address, function(data) {
         try {
             callback(getConsensus(data).split("/")[2]);
-        } catch {
+        } catch (e) {
             callback(null);
         }
     }, peersListArguments);
@@ -133,7 +133,7 @@ function getAddressBalance(address, callback = function() {}, peersListArguments
     getNodeValues("/getAddressBalance?address=" + address, function(data) {
         try {
             callback(Number(getConsensus(data).split("/")[2]));
-        } catch {
+        } catch (e) {
             callback(null);
         }
     }, peersListArguments);
