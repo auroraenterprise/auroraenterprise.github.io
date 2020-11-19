@@ -99,7 +99,8 @@
             "generateWalletError": "We couldn't generate your wallet",
             "generateWalletErrorDescription": "Check your connection to nodes and try again. Error code:",
             "generateWalletResult": "Your new wallet is ready!",
-            "generateWalletResultDescription": "We've generated your new wallet! Take note of the details listed below and keep them safe."
+            "generateWalletResultDescription": "We've generated your new wallet! Take note of the details listed below and keep them safe.",
+            "generateWalletResultWarning": "Keep this information safe and secure! Make a backup of this (maybe on paper) as it won't be shown again to you and ensure that nobody else sees the private key. This information is used to access your Auracoin wallet and it cannot be recovered."
         }
     };
 

@@ -22,7 +22,11 @@ function generateWallet() {
 
     setTimeout(function() {
         getNodeValues("/handleRegistrationFromPublicKey?publicKey=" + publicKey, function(data) {
+            var nonFailData = [];
+
             var status = getConsensus(data);
+
+            console.log(data);
 
             $("#generateWalletLoading").fadeOut(500);
 

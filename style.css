@@ -157,6 +157,22 @@ div.spinner::after {
     animation: spinner 2s infinite ease;
 }
 
+div.info, div.warning {
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: var(--secondaryBackgroundColour);
+    color: var(--secondaryForegroundColour);
+    text-align: left;
+}
+
+div.info {
+    border-left: 10px solid var(--primaryColour);
+}
+
+div.warning {
+    border-left: 10px solid var(--badColour);
+}
+
 h1, h1 * {
     font-family: "Quicksand", sans-serif;
 }
@@ -490,6 +506,11 @@ input.code:not(:placeholder-shown) {
     display: none;
 }
 
+#generateWalletResult div.info, #generateWalletResult div.warning {
+    width: 50%;
+    margin: auto;
+}
+
 /* Animation keyframes */
 
 @-moz-keyframes spinner {
@@ -602,6 +623,10 @@ input.code:not(:placeholder-shown) {
     .tab {
         margin-left: 20px;
         margin-right: 20px;
+    }
+
+    #generateWalletResult div.info, #generateWalletResult div.warning {
+        width: 80%;
     }
 }
 

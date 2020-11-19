@@ -72,8 +72,6 @@ function getNodeValues(command = "/", callback = function() {}, peersListArgumen
             }
         }
 
-        peers = peers.concat(proxiedPeers);
-
         var peerResultsHash = {};
         var peerResultsData = {};
         var peerCount = 0;
