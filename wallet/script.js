@@ -7,7 +7,7 @@
     Licensed by the Aurora Open-Source Licence, which can be found at LICENCE.md.
 */
 
-const HTTP_PROXY = "https://crossrun.herokuapp.com/";
+const HTTP_PROXY = "https://crossrun.onrender.com/";
 
 var peersListArguments = ["https://aur.xyz/auracoin-peers/", "main", "firstlevel"];
 var amountIsAuracoin = true;
